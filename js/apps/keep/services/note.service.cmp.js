@@ -22,8 +22,8 @@ function query() {
 }
 
 function _createNotes() {
-  let notes = storageService.query(KEY).then((res) => res);
-  console.log(notes);
+  let notes = storageService.loadFromStorage(KEY);
+
   if (!notes || !notes.length) {
     notes = [
       {
