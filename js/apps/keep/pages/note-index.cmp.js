@@ -54,7 +54,6 @@ export default {
       this.filterBy = filterBy;
     },
     addNote(note) {
-      console.log(note);
       this.notes.unshift(note);
       noteService.addNewNote(note).then((res) => {
         console.log("note added");
