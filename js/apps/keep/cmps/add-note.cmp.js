@@ -1,3 +1,24 @@
+// id: "fdSg55HJ",
+// type: "text",
+// content: "nice noteeee",
+
+// color: "aqua",
+// },
+// {
+// id: "fdSg62HJ",
+// type: "list",
+// content: ["hummus", "kotege", "ketshop", "milk"],
+
+// color: "lightsalmon",
+// },
+// {
+// id: "fdSg34HJ",
+// type: "image",
+// content:
+//   "https://forums-images.oneplus.net/attachments/117/117141-52a3d204ade09459d1180160cfe5df64.gif",
+// color: "lightsalmon",
+// },
+
 export default {
   template: `
         <section class="add-note">  
@@ -14,6 +35,7 @@ export default {
       note: {
         type: "text",
         content: "",
+        color: "rgb(89, 186, 216);",
       },
       isSelecedType: {
         text: true,
@@ -22,6 +44,7 @@ export default {
       },
     };
   },
+  created() {},
   components: {},
   methods: {
     setTypeImg() {
@@ -52,7 +75,12 @@ export default {
       this.$emit("filtered", { ...this.filterBy });
     },
     addNote() {
+      if (this.note.type === "list") {
+        this.note.content = this.note.content.split(",");
+      }
       this.$emit("addNote", this.note);
+      this.setTypeTxt();
+      this.note.content = "";
     },
   },
   computed: {

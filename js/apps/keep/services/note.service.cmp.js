@@ -7,14 +7,33 @@ export const noteService = {
   query,
   remove,
   get,
+  save,
+  getEmptyNote,
+  addNewNote,
 };
+
+function addNewNote(note) {
+  return storageService.post(KEY, note);
+}
 
 function remove(noteId) {
   return storageService.remove(KEY, noteId);
 }
 
+function getEmptyNote() {
+  return {
+    type: "text",
+    content: "",
+    color: "rgb(89, 186, 216);",
+  };
+}
+
 function get(noteId) {
   return storageService.get(KEY, noteId).then((note) => note);
+}
+
+function save(note) {
+  return storageService.put(KEY, note);
 }
 
 function query() {
@@ -28,61 +47,54 @@ function _createNotes() {
     notes = [
       {
         id: "fdSg54HJ",
-        info: {
-          type: "text",
-          content: "my first note!",
-        },
+        type: "text",
+        content: "my first note!",
+
         color: "yellow",
       },
       {
         id: "fdSg55HJ",
-        info: {
-          type: "text",
-          content: "nice noteeee",
-        },
+        type: "text",
+        content: "nice noteeee",
+
         color: "aqua",
       },
       {
         id: "fdSg62HJ",
-        info: {
-          type: "text",
-          content: "HELLO",
-        },
+        type: "list",
+        content: ["hummus", "kotege", "ketshop", "milk"],
+
         color: "lightsalmon",
       },
       {
         id: "fdSg34HJ",
-        info: {
-          type: "text",
-          content: "mission: Go to Oscar Wild",
-        },
+        type: "image",
+        content:
+          "https://forums-images.oneplus.net/attachments/117/117141-52a3d204ade09459d1180160cfe5df64.gif",
         color: "lightsalmon",
       },
       {
         id: "fdSg94HJ",
-        info: {
-          type: "text",
-          content:
-            "LIDORRRRRRRRRRRRRRRRRR RRRRRRRRRRRRRRRR RRRRRRRRRRRRRRRR RRRRRRRRRRRRRR",
-        },
+        type: "text",
+        content:
+          "LIDORRRRRRRRRRRRRRRRRR RRRRRRRRRRRRRRRR RRRRRRRRRRRRRRRR RRRRRRRRRRRRRR",
+
         color: "lightsalmon",
       },
       {
         id: "fdSg58HJ",
-        info: {
-          type: "text",
-          content: "x",
-        },
+        type: "list",
+        content: ["make a nice App", "Drink beer", "Sleep 7 hours"],
         color: "lightsalmon",
       },
-      {
-        id: "fdSg44HJ",
-        info: {
-          type: "text",
-          content: "HEY",
-        },
-        color: "green",
-      },
+      // {
+      //   id: "fdSg44HJ",
+      //   info: {
+      //     type: "text",
+      //     content: "HEY",
+      //   },
+      //   color: "green",
+      // },
     ];
     storageService.postMany(KEY, notes);
   }

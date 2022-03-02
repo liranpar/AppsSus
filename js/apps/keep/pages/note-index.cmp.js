@@ -8,7 +8,7 @@ export default {
   <section>  
       <note-filter  @filtered="setFilter" />
       <add-note @addNote="addNote" />
-      <note-list :notes="notes" />
+      <note-list :notes="notes" @removeListItem="removeListItem" @addItemToList="addItemToList" />
   </section>
   
   `,
@@ -32,11 +32,33 @@ export default {
     });
   },
   methods: {
+    addItemToList(data) {
+      let itemVal = data[0];
+      let noteId = data[1];
+      let noteIdx = this.notes.findIndex((note) => note.id === noteId);
+      this.notes[noteIdx].content.unshift(itemVal);
+      noteService.save(this.notes[noteIdx]).then((res) => {
+        console.log("item added");
+      });
+    },
+    removeListItem(data) {
+      let idx = data[0];
+      let noteId = data[1];
+      let noteIdx = this.notes.findIndex((note) => note.id === noteId);
+      this.notes[noteIdx].content.splice(idx, 1);
+      noteService.save(this.notes[noteIdx]).then((res) => {
+        console.log("item removed");
+      });
+    },
     setFilter(filterBy) {
       this.filterBy = filterBy;
     },
     addNote(note) {
       console.log(note);
+      this.notes.unshift(note);
+      noteService.addNewNote(note).then((res) => {
+        console.log("note added");
+      });
     },
   },
 
