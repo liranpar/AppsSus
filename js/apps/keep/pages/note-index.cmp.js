@@ -2,6 +2,7 @@
 // import bookList from "../cmps/book-list.cmp.js";
 // import bookFilter from "../cmps/book-filter.cmp.js";
 // import { eventBus } from "../services/eventBus-service.js";
+import noteFilter from "../cmps/note-filter.cmp.js";
 
 export default {
   template: `
