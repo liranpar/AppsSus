@@ -3,7 +3,7 @@ export default {
   template: `
   <section>
     <ul  class="notes-cont">
-        <li  v-for="note in notes" :key="note.id">
+        <li class="note-card"  v-for="note in notes" :key="note.id">
                
                <p>{{note.info.content}}</p> 
                <div class="btns-cont" >

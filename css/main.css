@@ -1,2 +1,4 @@
 @import url(basic/main-layout.css);
 @import url(cmps/main-header.css);
+@import url(apps/keep/note-card.css);
+@import url(apps/keep/note-filter.css);

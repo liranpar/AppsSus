@@ -62,7 +62,8 @@ function _createNotes() {
         id: "fdSg94HJ",
         info: {
           type: "text",
-          content: "LIDORRRRRRRRRR",
+          content:
+            "LIDORRRRRRRRRRRRRRRRRR RRRRRRRRRRRRRRRR RRRRRRRRRRRRRRRR RRRRRRRRRRRRRR",
         },
         color: "lightsalmon",
       },
