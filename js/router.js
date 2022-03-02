@@ -3,6 +3,8 @@
 // import newBook from "./views/new-book.cmp.js";
 import appHome from "./pages/app-home.cmp.js";
 import appAbout from "./pages/app-about.cmp.js";
+import mailIndex from "./apps/mail/pages/mail-index.cmp.js"
+import noteIndex from "./apps/keep/pages/note-index.cmp.js"
 
 const routes = [
   {
@@ -12,6 +14,14 @@ const routes = [
   {
     path: "/about",
     component: appAbout,
+  },
+  {
+    path: "/mail",
+    component: mailIndex,
+  },
+  {
+    path: "/keep",
+    component: noteIndex,
   },
   // {
   //   path: "/book",
