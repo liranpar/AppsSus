@@ -1,5 +1,6 @@
 import mainHeader from "./cmps/main-header.cmp.js";
 import mainFooter from "./cmps/main-footer.cmp.js";
+import { router } from "./router.js";
 
 const options = {
     components: {
