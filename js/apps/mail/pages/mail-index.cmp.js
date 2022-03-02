@@ -1,29 +1,24 @@
 import { mailService } from "../services/mail.service.cmp.js";
 import mailList from "../cmps/mail-list.cmp.js";
-import mailPreview from "../cmps/mail-preview.cmp.js";
+import mailFolderList from "../cmps/mail-folder-list.cmp.js";
+import mailCompose from "../cmps/mail-compose.cmp.js";
 
 export default {
     template: `
         <section class="main-mail-page">
-            <section class="mail-folders"></section>
-            <section class="mail-list" v-if="mails">
-            <ul>
-                <li v-for="mail in mails" :key="mail.id" class="mail-preview-container">
-                   <mail-preview :mail="mail" />
-                   <div class="mail-received-time">time</div>
-                   <div class="actions">
-                       <button @click="remove(mail.id)">X</button>
-                       <button @click="setToReadNotRead(mail.id)">Envelope</button>
-                   </div>
-                </li>
-            </ul>
+            <section class="compose-and-folder">
+                <mail-compose />
+                <mail-folder-list />
             </section>
+            <mail-list :mails="mails" />
         </section>
 `,
 components: {
     mailService,
     mailList,
-    mailPreview,
+    mailFolderList,
+    mailCompose,
+
 },
     data() {
         return {
