@@ -64,7 +64,6 @@ function _save(entityType, entities) {
 }
 
 function makeId(length = 8) {
-<<<<<<< HEAD
   var text = "";
   var possible =
     "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
@@ -72,12 +71,4 @@ function makeId(length = 8) {
     text += possible.charAt(Math.floor(Math.random() * possible.length));
   }
   return text;
-=======
-    var text = "";
-    var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-    for (var i = 0; i < length; i++) {
-        text += possible.charAt(Math.floor(Math.random() * possible.length));
-    }
-    return text;
->>>>>>> a590f9e90f92e46bd2e6a1cfbc62b55a659a20fb
 }
