@@ -1,5 +1,4 @@
 export const storageService = {
-<<<<<<< HEAD
   query,
   get,
   post,
@@ -7,17 +6,8 @@ export const storageService = {
   remove,
   postMany,
   loadFromStorage,
+  makeId,
 };
-=======
-    query,
-    get,
-    post,
-    put,
-    remove,
-    postMany,
-    makeId
-}
->>>>>>> 15d2c8861b1dff0284db19f9f5fa45843346e1f6
 
 function query(entityType) {
   var entities = JSON.parse(localStorage.getItem(entityType)) || [];
@@ -73,8 +63,7 @@ function _save(entityType, entities) {
   localStorage.setItem(entityType, JSON.stringify(entities));
 }
 
-<<<<<<< HEAD
-function _makeId(length = 8) {
+function makeId(length = 8) {
   var text = "";
   var possible =
     "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
@@ -83,13 +72,3 @@ function _makeId(length = 8) {
   }
   return text;
 }
-=======
-function makeId(length = 8) {
-    var text = "";
-    var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-    for (var i = 0; i < length; i++) {
-        text += possible.charAt(Math.floor(Math.random() * possible.length));
-    }
-    return text;
-}
->>>>>>> 15d2c8861b1dff0284db19f9f5fa45843346e1f6
