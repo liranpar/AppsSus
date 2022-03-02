@@ -1,7 +1,10 @@
-import { utilService } from '../../../services/util-service.js';
 import { storageService } from "../../../services/async-storage-sevice.js";
 
 const STORAGE_KEY = 'mailsDB';
+const loggedInUser = {
+    email: 'LidorWa@apsusmail.com',
+    fullName: 'Menuvaldmaniak'
+}
 _createMails();
 
 export const mailService = {
@@ -42,33 +45,36 @@ function _setNextPrevMailId(mail) {
 }
 
 // Factory Method:
-// function getEmptyCar(vendor = '', maxSpeed = 0) {
-//     return {
-//         id: '',
-//         vendor,
-//         maxSpeed,
-//         prevOwners: []
-//     };
-// }
 
-// function _createCars() {
-//     let cars = utilService.loadFromStorage(STORAGE_KEY);
-//     if (!cars || !cars.length) {
-//         cars = [];
-//         cars.push(_createCar('audu', 300));
-//         cars.push(_createCar('fiak', 120));
-//         cars.push(_createCar('subali', 100));
-//         cars.push(_createCar('mitsi', 150));
-//         utilService.saveToStorage(STORAGE_KEY, cars);
-//     }
-//     return cars;
-// }
+function getEmptyMail(subject, body, to) {
+    return {
+        id: '',
+        subject,
+        body,
+        isRead: false,
+        sentAt: Date.now(),
+        to,
+    };
+}
 
-// function _createCar(vendor, maxSpeed = 250) {
-//     const car = getEmptyCar(vendor, maxSpeed)
-//     car.id = utilService.makeId()
-//     return car;
-// }
+function _createMails() {
+    let mails = storageService.query(STORAGE_KEY);
+    if (!mails || !mails.length) {
+        mails = [];
+        mails.push(_createMail('Liran was here', 'But he is now gone, too bad!', 'Liranpa@apsusmail.com'));
+        mails.push(_createMail('Coding academy', 'Coding academy is the best course among all the coding acadamies courses', 'LidorWa@apsusmail.com'));
+        mails.push(_createMail('Matan Lasri', 'Matan Lasri is a nice person, but so does Lihi', 'LidorWa@apsusmail.com'));
+        mails.push(_createMail('Among us', '10 ways to find the mole tutor in the whatsapp group', 'LidorWa@apsusmail.com'));
+        storageService.post(STORAGE_KEY, mails);
+    }
+    return mails;
+}
+
+function _createMail(subject, body, to) {
+    const mail = getEmptyMail (subject, body, to);
+    mail.id = storageService.makeId();
+    return mail;
+}
 
 
 
