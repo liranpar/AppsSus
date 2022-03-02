@@ -4,7 +4,7 @@ export default {
   <section>
     <ul  class="notes-cont">
         <li class="note-card"  v-for="note in notes" :key="note.id">
-               
+               <!-- <component></component> -->
                <p>{{note.info.content}}</p> 
                <div class="btns-cont" >
                      <span>A</span>

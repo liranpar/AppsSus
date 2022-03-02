@@ -1,4 +1,3 @@
-import { utilService } from "../../../services/util-service.js";
 import { storageService } from "../../../services/async-storage-sevice.js";
 
 const KEY = "notes";
@@ -19,11 +18,12 @@ function get(noteId) {
 }
 
 function query() {
-  return storageService.query(KEY);
+  return storageService.query(KEY).then((res) => res);
 }
 
 function _createNotes() {
-  let notes = utilService.loadFromStorage(KEY);
+  let notes = storageService.query(KEY).then((res) => res);
+  console.log(notes);
   if (!notes || !notes.length) {
     notes = [
       {
@@ -84,8 +84,7 @@ function _createNotes() {
         color: "green",
       },
     ];
+    storageService.postMany(KEY, notes);
   }
-  utilService.saveToStorage(KEY, notes);
-  console.log(notes);
   return notes;
 }

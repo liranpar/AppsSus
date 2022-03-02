@@ -10,7 +10,9 @@ const options = {
   template: `
     <section class="app">
         <main-header />
-        <router-view /> 
+      <main class="app-container">
+      <router-view /> 
+      </main>
         <main-footer />
     </section>
     `,
@@ -18,6 +20,14 @@ const options = {
   methods: {},
   computed: {},
 };
+// .app{
+//     display:flex;
+//     flex-direction:column;
+//     min-height:100vh;
+// }
+// .app-container{
+//     flex-grow:1;
+// }
 
 const app = Vue.createApp(options);
 app.use(router);

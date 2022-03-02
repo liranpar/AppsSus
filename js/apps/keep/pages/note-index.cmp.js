@@ -1,13 +1,13 @@
 import { noteService } from "../services/note.service.cmp.js";
-
-// import { eventBus } from "../services/eventBus-service.js";
 import noteFilter from "../cmps/note-filter.cmp.js";
+import addNote from "../cmps/add-note.cmp.js";
 import noteList from "../cmps/note-list.cmp.js";
 
 export default {
   template: `
   <section>  
       <note-filter  @filtered="setFilter" />
+      <add-note @addNote="addNote" />
       <note-list :notes="notes" />
   </section>
   
@@ -16,6 +16,7 @@ export default {
   components: {
     noteFilter,
     noteList,
+    addNote,
   },
 
   data() {
@@ -33,7 +34,9 @@ export default {
   methods: {
     setFilter(filterBy) {
       this.filterBy = filterBy;
-      console.log(this.filterBy);
+    },
+    addNote(note) {
+      console.log(note);
     },
   },
 
