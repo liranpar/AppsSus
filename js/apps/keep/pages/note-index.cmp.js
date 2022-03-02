@@ -1,60 +1,66 @@
-// import { bookService } from "../services/book-service.js";
-// import bookList from "../cmps/book-list.cmp.js";
-// import bookFilter from "../cmps/book-filter.cmp.js";
+import { noteService } from "../services/note.service.cmp.js";
+
 // import { eventBus } from "../services/eventBus-service.js";
 import noteFilter from "../cmps/note-filter.cmp.js";
+import noteList from "../cmps/note-list.cmp.js";
 
 export default {
   template: `
-  <section class="app-main">  
-      <!-- *Add note-filter component -->
+  <section>  
       <note-filter  @filtered="setFilter" />
-      <!-- *add note-list component -->
+      <note-list :notes="notes" />
   </section>
   
   `,
 
   components: {
     noteFilter,
-    // noteList,
+    noteList,
   },
 
   data() {
     return {
-      books: null,
+      notes: null,
       filterBy: null,
-      selectedBook: null,
     };
   },
   created() {
-    bookService.query().then((books) => (this.books = books));
+    noteService.query().then((notes) => {
+      this.notes = notes;
+      console.log(this.notes);
+    });
   },
   methods: {
-    removeBook(bookid) {
-      bookService.remove(bookid).then();
-      var idx = this.books.findIndex((book) => book.id === bookid);
-      this.books.splice(idx, 1);
-      eventBus.emit("show-msg", "Book removed!");
-    },
-    bookSelected(bookId) {
-      this.selectedBook = this.books.find((book) => book.id === bookId);
-    },
     setFilter(filterBy) {
       this.filterBy = filterBy;
-    },
-    closeDetails() {
-      this.selectedBook = null;
-      this.filterBy = null;
+      console.log(this.filterBy);
     },
   },
-  computed: {
-    booksForDisplay() {
-      if (!this.filterBy) return this.books;
-      const regex = new RegExp(this.filterBy.name, "i");
-      return this.books.filter(
-        (book) =>
-          regex.test(book.title) && book.listPrice.amount <= this.filterBy.price
-      );
-    },
-  },
+
+  //   methods: {
+  //     removeNote(noteId) {
+  //       noteService.remove(noteId).then();
+  //       var idx = this.notes.findIndex((note) => note.id === noteId);
+  //       this.notes.splice(idx, 1);
+  //       eventBus.emit("show-msg", "Note removed!");
+  //     },
+
+  //     setFilter(filterBy) {
+  //       this.filterBy = filterBy;
+  //     },
+  //     closeDetails() {
+  //       this.selectedNote = null;
+  //       this.filterBy = null;
+  //     },
+  //   },
+  //   computed: {
+  //     notesForDisplay() {
+  //       if (!this.filterBy) return this.notes;
+  //       const regex = new RegExp(this.filterBy.name, "i");
+  //       return this.notes.filter(
+  //         (notes) =>
+  //           regex.test(note.info.content) && note.type.amount === this.filterBy.type
+  //       );
+  //     },
+  //   },
 };

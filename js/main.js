@@ -3,27 +3,22 @@ import mainFooter from "./cmps/main-footer.cmp.js";
 import { router } from "./router.js";
 
 const options = {
-    components: {
-        mainHeader,
-        mainFooter
-    },
-    template: `
+  components: {
+    mainHeader,
+    mainFooter,
+  },
+  template: `
     <section class="app">
         <main-header />
-        <!-- <router-view />  -->
+        <router-view /> 
         <main-footer />
     </section>
     `,
 
-    methods: {
-
-    },
-    computed: {
-
-    }
-}
-
+  methods: {},
+  computed: {},
+};
 
 const app = Vue.createApp(options);
 app.use(router);
-app.mount('#app');
+app.mount("#app");
