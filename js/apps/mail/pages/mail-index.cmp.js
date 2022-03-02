@@ -1,8 +1,12 @@
+import { mailService } from "../services/mail.service.cmp.js";
+import mailList from "../cmps/mail-list.cmp.js";
+import mailPreview from "../cmps/mail-preview.cmp.js";
+
 export default {
     template: `
         <section class="main-mail-page">
             <section class="mail-folders"></section>
-            <section class="mail-list">
+            <section class="mail-list" v-if="mails">
             <ul>
                 <li v-for="mail in mails" :key="mail.id" class="mail-preview-container">
                    <mail-preview :mail="mail" />
@@ -16,13 +20,19 @@ export default {
             </section>
         </section>
 `,
+components: {
+    mailService,
+    mailList,
+    mailPreview,
+},
     data() {
         return {
-
+            mails: [],
         }
     },
     created() {
-
+        mailService.query()
+            .then(mails => this.mails = mails);
     },
     methods: {
 
