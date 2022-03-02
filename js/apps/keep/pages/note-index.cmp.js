@@ -16,7 +16,7 @@ export default {
 
   components: {
     noteFilter,
-    noteList,
+    // noteList,
   },
 
   data() {

@@ -30,6 +30,7 @@ function _createNotes() {
         id: "fdSg54HJ",
         info: {
           type: "text",
+          contect: "dsfdsfdfdsfsdfsd",
         },
       },
     ];
