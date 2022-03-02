@@ -78,7 +78,7 @@ export default {
       if (this.note.type === "list") {
         this.note.content = this.note.content.split(",");
       }
-      this.$emit("addNote", this.note);
+      this.$emit("addNote", { ...this.note });
       this.setTypeTxt();
       this.note.content = "";
     },
