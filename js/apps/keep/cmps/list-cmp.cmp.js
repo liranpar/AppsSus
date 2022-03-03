@@ -4,13 +4,13 @@ export default {
           <section>  
              <ul>
                  <li v-for="(item, idx) in note.content" >
-                   <button @click="removeListItem(idx)" >x</button>
+                   <button class="delet-item" @click="removeListItem(idx)" >x</button>
                    {{item}}               
                  </li>
-                 <button @click="onAdd" >+</button>
+                 <button  v-if="!isAdding" @click="onAdd" >Add</button>
                  <div v-if="isAdding" >
                    <input type="text" v-model="addingVal" >
-                   <button @click="addItem" >add</button>
+                   <button @click="addItem" >add</button><button @click="closeInput" >X</button>
                  </div>
              </ul>
           </section>
@@ -23,6 +23,10 @@ export default {
   },
   components: {},
   methods: {
+    closeInput() {
+      this.isAdding = false;
+      this.addingVal = "";
+    },
     addItem() {
       this.$emit("addItemToList", [this.addingVal, this.note.id]);
       this.isAdding = false;

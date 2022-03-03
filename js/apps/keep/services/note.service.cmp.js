@@ -10,10 +10,15 @@ export const noteService = {
   save,
   getEmptyNote,
   addNewNote,
+  pinNote,
 };
 
 function addNewNote(note) {
   return storageService.post(KEY, note);
+}
+
+function pinNote(noteId, noteCopy) {
+  return remove(noteId).then((res) => addNewNote(noteCopy));
 }
 
 function remove(noteId) {
@@ -24,7 +29,9 @@ function getEmptyNote() {
   return {
     type: "text",
     content: "",
-    color: "rgb(89, 186, 216);",
+    style: {
+      backgroundColor: "rgb(89, 186, 216)",
+    },
   };
 }
 
@@ -49,29 +56,36 @@ function _createNotes() {
         id: "fdSg54HJ",
         type: "text",
         content: "my first note!",
-
-        color: "yellow",
+        style: {
+          backgroundColor: "rgb(89, 186, 216)",
+        },
       },
       {
         id: "fdSg55HJ",
         type: "text",
         content: "nice noteeee",
 
-        color: "aqua",
+        style: {
+          backgroundColor: "rgb(89, 186, 216)",
+        },
       },
       {
         id: "fdSg62HJ",
         type: "list",
         content: ["hummus", "kotege", "ketshop", "milk"],
 
-        color: "lightsalmon",
+        style: {
+          backgroundColor: "rgb(89, 186, 216)",
+        },
       },
       {
         id: "fdSg34HJ",
         type: "image",
         content:
           "https://forums-images.oneplus.net/attachments/117/117141-52a3d204ade09459d1180160cfe5df64.gif",
-        color: "lightsalmon",
+        style: {
+          backgroundColor: "rgb(89, 186, 216)",
+        },
       },
       {
         id: "fdSg94HJ",
@@ -79,13 +93,17 @@ function _createNotes() {
         content:
           "LIDORRRRRRRRRRRRRRRRRR RRRRRRRRRRRRRRRR RRRRRRRRRRRRRRRR RRRRRRRRRRRRRR",
 
-        color: "lightsalmon",
+        style: {
+          backgroundColor: "yellow",
+        },
       },
       {
         id: "fdSg58HJ",
         type: "list",
         content: ["make a nice App", "Drink beer", "Sleep 7 hours"],
-        color: "lightsalmon",
+        style: {
+          backgroundColor: "red",
+        },
       },
       // {
       //   id: "fdSg44HJ",

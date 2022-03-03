@@ -8,7 +8,7 @@ export default {
   <section>  
       <note-filter  @filtered="setFilter" />
       <add-note @addNote="addNote" />
-      <note-list :notes="notes" @removeListItem="removeListItem" @addItemToList="addItemToList" />
+      <note-list :notes="notesForDisplay" @removeListItem="removeListItem" @addItemToList="addItemToList" @onRemoveNote="removeNote" @onPinNote="pinNote" @setColor="setColor" />
   </section>
   
   `,
@@ -32,13 +32,38 @@ export default {
     });
   },
   methods: {
+    setColor(data) {
+      let noteId = data[0];
+      let color = data[1];
+      let noteIdx = this.notes.findIndex((note) => note.id === noteId);
+      this.notes[noteIdx].style.backgroundColor = color;
+      noteService.save(this.notes[noteIdx]).then();
+    },
+    pinNote(noteId) {
+      let noteIdx = this.notes.findIndex((note) => note.id === noteId);
+      let noteCopy = { ...this.notes[noteIdx] };
+      this.notes.splice(noteIdx, 1);
+      this.notes.unshift(noteCopy);
+      noteService.pinNote(noteId, noteCopy).then((res) => {
+        console.log("Note pinned");
+      });
+    },
+    removeNote(noteId) {
+      let noteIdx = this.notes.findIndex((note) => note.id === noteId);
+      noteService.remove(noteId).then((res) => {
+        console.log("Note removed");
+      });
+      this.notes.splice(noteIdx, 1);
+      console.log(noteIdx);
+    },
+
     addItemToList(data) {
       let itemVal = data[0];
       let noteId = data[1];
       let noteIdx = this.notes.findIndex((note) => note.id === noteId);
       this.notes[noteIdx].content.unshift(itemVal);
       noteService.save(this.notes[noteIdx]).then((res) => {
-        console.log("item added");
+        console.log("Item added to list");
       });
     },
     removeListItem(data) {
@@ -47,7 +72,7 @@ export default {
       let noteIdx = this.notes.findIndex((note) => note.id === noteId);
       this.notes[noteIdx].content.splice(idx, 1);
       noteService.save(this.notes[noteIdx]).then((res) => {
-        console.log("item removed");
+        console.log("Item removed from list");
       });
     },
     setFilter(filterBy) {
@@ -56,7 +81,27 @@ export default {
     addNote(note) {
       this.notes.unshift(note);
       noteService.addNewNote(note).then((res) => {
-        console.log("note added");
+        console.log("Note added");
+      });
+    },
+  },
+  computed: {
+    notesForDisplay() {
+      if (!this.filterBy) return this.notes;
+      const regex = new RegExp(this.filterBy.text, "i");
+      console.log(this.filterBy);
+      return this.notes.filter((note) => {
+        if (note.type === "list") {
+          let listText = note.content.join(" ");
+          return (
+            regex.test(listText) &&
+            (!this.filterBy.type ? true : note.type === this.filterBy.type)
+          );
+        }
+        return (
+          regex.test(note.content) &&
+          (!this.filterBy.type ? true : note.type === this.filterBy.type)
+        );
       });
     },
   },

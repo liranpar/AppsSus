@@ -1,8 +1,8 @@
 export default {
   template: `
         <section class="add-note">  
-            <label for="new">Add new note</label>
-           <input id="new" v-model="note.content" :placeholder="getPlaceholder">
+            <label class="new-note-lable" for="new">New note</label>
+           <input @keyup.enter="addNote" id="new" v-model="note.content" :placeholder="getPlaceholder">
            <span class="type" :class="{ selected: isSelecedType.text }"  @click="setTypeTxt" >txt</span>
            <span class="type" :class="{ selected: isSelecedType.image }" @click="setTypeImg" >img</span>
            <span class="type" :class="{ selected: isSelecedType.list }"  @click="setTypeList" >list</span>
@@ -14,7 +14,9 @@ export default {
       note: {
         type: "text",
         content: "",
-        color: "rgb(89, 186, 216);",
+        style: {
+          backgroundColor: "rgb(89, 186, 216)",
+        },
       },
       isSelecedType: {
         text: true,
@@ -49,9 +51,6 @@ export default {
         image: false,
         list: true,
       };
-    },
-    setFilter() {
-      this.$emit("filtered", { ...this.filterBy });
     },
     addNote() {
       if (!this.note.content.trim()) return;
