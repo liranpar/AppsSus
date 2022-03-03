@@ -6,6 +6,7 @@ export default {
     <h1>{{ currMail.subject }}</h1>
     <h3>{{ currMail.to }}</h3>
     <p>{{ currMail.body }}</p>
+    <button class="remove-within-details" @click="removeEmail"> Delete mail </button>
 </section>
 `,
   data() {
@@ -19,7 +20,17 @@ export default {
       console.log(this.currMail);
     });
   },
-  methods: {},
+  methods: {
+    removeEmail (){
+      if (this.currMail.status !== 'removed'){
+        this.currMail.status = 'removed';
+        mailService.save(this.currMail)
+      } else {
+        mailService.remove(this.currMail.id)
+      }
+      this.$router.push('/mail')
+    }
+  },
   computed: {
     mailId() {
       return this.$route.params.mailId;
