@@ -10,7 +10,7 @@ export default {
                 <mail-compose />
                 <mail-folder-list />
             </section>
-            <mail-list :mails="mails" />
+            <mail-list v-if="mails" :mails="mails" />
         </section>
 `,
 components: {
