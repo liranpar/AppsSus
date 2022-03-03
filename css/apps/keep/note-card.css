@@ -22,6 +22,8 @@ ul {
   padding: 10px;
   border-radius: 10px;
   list-style-type: none;
+  box-shadow: 4px 5px 2px 0 rgb(0 0 0 / 14%), 0 3px 1px -2px rgb(0 0 0 / 20%),
+    2px 4px 4px 0px rgb(150 151 192);
 }
 
 .note-card span {
@@ -48,11 +50,6 @@ ul {
   display: flex;
   margin-top: 10px;
 }
-
-/* .remov-note-btn {
-  font-size: 1.3rem;
-  color: rgb(168, 0, 0);
-} */
 
 .fill-and-stroke-div {
   position: relative;
