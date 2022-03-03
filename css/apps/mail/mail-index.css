@@ -1,0 +1,23 @@
+.main-mail-page{
+    display: flex;
+}
+
+.compose-and-folder{
+    display: flex;
+    flex-direction: column;
+    position: sticky;
+}
+
+.mail-folder-list-ul{
+    list-style: none;
+}
+.mail-folder-list-ul li{
+    border-top-right-radius: 100px;
+    border-bottom-right-radius: 100px;
+    background-color: #fce8e6;
+    padding: 10px 30px;
+}
+
+.mail-folder-list-ul:hover{
+    cursor: pointer;
+}

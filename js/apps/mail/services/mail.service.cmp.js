@@ -26,7 +26,7 @@ function remove(mailId) {
 function get(mailId) {
     return storageService.get(STORAGE_KEY, mailId)
     .then(mail => {
-        return _setNextPrevCarId(mail)
+        return _setNextPrevMailId(mail)
     })
 }
 
@@ -71,9 +71,10 @@ function _createMails() {
 }
 
 function _createMail(subject, body, to) {
-    const mail = getEmptyMail (subject, body, to);
+    let mail = getEmptyMail (subject, body, to);
+    console.log(mail.sentAt)
     mail.id = storageService.makeId();
-    console.log(mail)
+    console.log(mail.sentAt)
     return mail;
 }
 
