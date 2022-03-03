@@ -6,6 +6,7 @@ export default {
                 <li @click="setFilter('starred')"  class="folder-list-starred">Starred</li>
                 <li @click="setFilter('sent')"  class="folder-list-sent-mail">Sent Mail</li>
                 <li @click="setFilter('drafts')" class="folder-list-drafts">Drafts</li>
+                <li @click="setFilter('removed')" class="folder-list-drafts">Deleted</li>
             </ul>
         </section>
 `,

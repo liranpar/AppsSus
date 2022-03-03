@@ -11,7 +11,7 @@ export default {
                 <mail-compose v-if="isCompose" @closeModal="isCompose=!isCompose" @sendMail="sendMail"/>
                 <mail-folder-list @setFilter="setFilter"/>
             </section>
-            <mail-list v-if="mails" :mails="mailsToDisplay" />
+            <mail-list v-if="mails" :mails="mailsToDisplay" @removeMail="removeMail" />
         </section>
 `,
   components: {
@@ -34,15 +34,23 @@ export default {
     mailService.query().then((mails) => (this.mails = mails));
   },
   methods: {
+    removeMail(mailId) {
+      var currMail = this.mails.find((mail) => mail.id === mailId);
+      currMail.status = "removed";
+      //   mailService.save(currMail).then((res) => {
+      //     console.log("mail removed");
+      //   });
+      console.log(currMail);
+    },
     setFilter(filterByFromFolders) {
       this.filterBy = filterByFromFolders;
     },
-    sendMail(newMail){
-        mailService.save(newMail)
-        this.isCompose = !this.isCompose;
-        console.log('newMail inside sendMail inside mail-index',newMail)
-        this.mails.unshift(newMail);
-    }
+    sendMail(newMail) {
+      mailService.save(newMail);
+      this.isCompose = !this.isCompose;
+      console.log("newMail inside sendMail inside mail-index", newMail);
+      this.mails.unshift(newMail);
+    },
   },
   computed: {
     mailsToDisplay() {
