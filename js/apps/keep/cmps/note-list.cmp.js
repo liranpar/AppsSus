@@ -8,12 +8,13 @@ export default {
   <section>
     <ul  class="notes-cont">
         <div class="note-card"  v-for="note in notes" :key="note.id">
-               <component :is="note.type+'Cmp'" :note="note" @removeListItem="removeListItem" @addItemToList="addItemToList" ></component>
-               <!-- <p>{{note.content}}</p>  -->
+               <component class="card-cmp" :is="note.type+'Cmp'" :note="note" @removeListItem="removeListItem" @addItemToList="addItemToList" ></component>
+             
                <div class="btns-cont" >
                      <span>A</span>
                      <span>color</span>
-                     <span>pin</span>
+                     <span>📌</span>
+                     <font-awesome-icon icon="fa-solid fa-thumbtack" />
                      <span>🗑</span>
                </div>
         </div>

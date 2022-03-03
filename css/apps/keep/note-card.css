@@ -16,7 +16,14 @@
 
 .note-card span {
   margin: 5px;
-  background-color: rgb(165, 182, 17);
+  opacity: 0.6;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.note-card span:hover {
+  opacity: 1;
+  font-weight: bold;
 }
 
 .note-img {
