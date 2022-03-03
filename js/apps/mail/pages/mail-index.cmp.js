@@ -7,8 +7,9 @@ export default {
   template: `
         <section class="main-mail-page">
             <section class="compose-and-folder">
-                <mail-compose />
-                <mail-folder-list @setFilter="setFilter" />
+            <button v-if="!isCompose" class="compose-btn" @click="isCompose = !isCompose" >+ compose </button>
+                <mail-compose v-if="isCompose" @closeModal="isCompose=!isCompose" @sendMail="sendMail"/>
+                <mail-folder-list @setFilter="setFilter"/>
             </section>
             <mail-list v-if="mails" :mails="mailsToDisplay" />
         </section>
@@ -21,6 +22,7 @@ export default {
   },
   data() {
     return {
+      isCompose: false,
       mails: [],
       filterBy: {
         folder: "inbox",
@@ -35,6 +37,12 @@ export default {
     setFilter(filterByFromFolders) {
       this.filterBy = filterByFromFolders;
     },
+    sendMail(newMail){
+        mailService.save(newMail)
+        this.isCompose = !this.isCompose;
+        console.log('newMail inside sendMail inside mail-index',newMail)
+        this.mails.unshift(newMail);
+    }
   },
   computed: {
     mailsToDisplay() {
