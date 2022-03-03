@@ -2,6 +2,7 @@ import { mailService } from "../services/mail.service.cmp.js";
 import mailList from "../cmps/mail-list.cmp.js";
 import mailFolderList from "../cmps/mail-folder-list.cmp.js";
 import mailCompose from "../cmps/mail-compose.cmp.js";
+import mailDetails from "./mail-details.cmp.js";
 
 export default {
   template: `
@@ -12,6 +13,7 @@ export default {
                 <mail-folder-list @setFilter="setFilter"/>
             </section>
             <mail-list v-if="mails" :mails="mailsToDisplay" @removeMail="removeMail" />
+            <router-link to="/maildetails" ></router-link>
         </section>
 `,
   components: {
@@ -19,6 +21,7 @@ export default {
     mailList,
     mailFolderList,
     mailCompose,
+    mailDetails,
   },
   data() {
     return {
@@ -36,11 +39,18 @@ export default {
   methods: {
     removeMail(mailId) {
       var currMail = this.mails.find((mail) => mail.id === mailId);
-      currMail.status = "removed";
-      //   mailService.save(currMail).then((res) => {
-      //     console.log("mail removed");
-      //   });
-      console.log(currMail);
+      if (currMail.status !== "removed") {
+        currMail.status = "removed";
+        mailService.save(currMail).then((res) => {
+          console.log("mail removed");
+        });
+      } else {
+        var currMailIndex = this.mails.findIndex((mail) => mail.id === mailId);
+        this.mails.splice(currMailIndex, 1);
+        mailService.remove(mailId).then((res) => {
+          console.log("Mail deleted permanently");
+        });
+      }
     },
     setFilter(filterByFromFolders) {
       this.filterBy = filterByFromFolders;
