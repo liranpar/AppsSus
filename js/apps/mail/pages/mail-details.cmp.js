@@ -1,13 +1,28 @@
+import { mailService } from "../services/mail.service.cmp.js";
+
 export default {
   template: `
-<section>
-    <h1>Hello</h1>
+<section v-if="currMail" >  
+    <h1>{{ currMail.subject }}</h1>
+    <h3>{{ currMail.to }}</h3>
+    <p>{{ currMail.body }}</p>
 </section>
 `,
   data() {
-    return {};
+    return {
+      currMail: null,
+    };
   },
-  created() {},
+  created() {
+    mailService.get(this.mailId).then((mail) => {
+      this.currMail = mail;
+      console.log(this.currMail);
+    });
+  },
   methods: {},
-  computed: {},
+  computed: {
+    mailId() {
+      return this.$route.params.mailId;
+    },
+  },
 };

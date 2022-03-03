@@ -1,13 +1,17 @@
 export default {
   props: ["mail"],
+  emits: ["removeMail"],
   template: `
+        <router-link :to="'/mail/'+mail.id" >
         <div class="mail-preview"><span class="senders-name"></span><span class="mail-subject">
         {{mail.subject}}</span> <span class="mail-body">{{mail.body}} </span><span class="mail-time">{{getTimeForDisplay()}}</span>
-            <span class="actions">
+        </div>
+        </router-link>  
+        <span class="actions">
                 <button @click="setToReadNotRead(mail.id)">Envelope</button>
                 <button @click="removeMail(mail.id)">X</button>
-            </span>
-        </div>
+        </span>
+        
 `,
   data() {
     console.log(this.mail);
@@ -16,7 +20,7 @@ export default {
       minutes: new Date(this.mail.sentAt).getMinutes(),
     };
   },
-  created() {},
+
   methods: {
     removeMail(mailId) {
       this.$emit("removeMail", mailId);
@@ -27,11 +31,6 @@ export default {
     getTimeForDisplay() {
       return this.padTo2Digits(this.hours + ":" + this.minutes);
     },
-  },
-  computed: {
-    // getTimeForDisplay (){
-    //     return this.mail.sentAt.toISOString();
-    // }
   },
 };
 

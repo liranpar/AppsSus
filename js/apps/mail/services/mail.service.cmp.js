@@ -1,6 +1,6 @@
 import { storageService } from "../../../services/async-storage-sevice.js";
 
-const STORAGE_KEY = 'mailsDB';
+const STORAGE_KEY = "mailsDB";
 
 const loggedInUser = {
   email: "LidorWa@apsusmail.com",
@@ -9,11 +9,11 @@ const loggedInUser = {
 _createMails();
 
 export const mailService = {
-    query,
-    remove,
-    save,
-    get,
-    getEmptyMail,
+  query,
+  remove,
+  save,
+  get,
+  getEmptyMail,
 };
 
 function query() {
@@ -25,9 +25,7 @@ function remove(mailId) {
 }
 
 function get(mailId) {
-  return storageService.get(STORAGE_KEY, mailId).then((mail) => {
-    return _setNextPrevMailId(mail);
-  });
+  return storageService.get(STORAGE_KEY, mailId);
 }
 
 function save(mail) {
@@ -48,19 +46,19 @@ function _setNextPrevMailId(mail) {
 
 // Factory Method:
 
-function getEmptyMail(subject ='', body = '', status='sent', to = '') {
-    return {
-        id: null,
-        subject,
-        body,
-        status,
-        isRead: false,
-        isTrashed: false,
-        isStarred: false,
-        isDraft: false,
-        sentAt: Date.now(),
-        to,
-    };
+function getEmptyMail(subject = "", body = "", status = "sent", to = "") {
+  return {
+    id: null,
+    subject,
+    body,
+    status,
+    isRead: false,
+    isTrashed: false,
+    isStarred: false,
+    isDraft: false,
+    sentAt: Date.now(),
+    to,
+  };
 }
 
 function _createMails() {

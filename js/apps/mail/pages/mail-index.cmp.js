@@ -13,7 +13,6 @@ export default {
                 <mail-folder-list @setFilter="setFilter"/>
             </section>
             <mail-list v-if="mails" :mails="mailsToDisplay" @removeMail="removeMail" />
-            <router-link to="/maildetails" ></router-link>
         </section>
 `,
   components: {
