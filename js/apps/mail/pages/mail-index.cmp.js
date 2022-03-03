@@ -38,8 +38,8 @@ export default {
   },
   computed: {
     mailsToDisplay() {
-      return this.mails;
-      //   return this.mails.filter((mail) => mail.status === this.filterBy.folder);
+      //   return this.mails;
+      return this.mails.filter((mail) => mail.status === this.filterBy.folder);
     },
   },
 };
