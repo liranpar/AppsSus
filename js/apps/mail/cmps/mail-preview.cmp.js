@@ -1,7 +1,8 @@
 export default {
     props: ['mail'],
     template: `
-        <div class="mail-preview" @click=><span class="senders-name">{{mail.subject}} {{mail.body}} <span class="mail-time">{{getTimeForDisplay()}}</span>
+        <div class="mail-preview" @click=><span class="senders-name"></span><span class="mail-subject">
+        {{mail.subject}}</span> <span class="mail-body">{{mail.body}} </span><span class="mail-time">{{getTimeForDisplay()}}</span>
             <span class="actions">
                 <button @click="setToReadNotRead(mail.id)">Envelope</button>
                 <button @click="remove(mail.id)">X</button>
