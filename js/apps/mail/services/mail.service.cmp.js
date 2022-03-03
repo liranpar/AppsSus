@@ -46,12 +46,16 @@ function _setNextPrevMailId(mail) {
 
 // Factory Method:
 
-function getEmptyMail(subject, body, to) {
+function getEmptyMail(subject, body, status, to) {
     return {
         id: '',
         subject,
         body,
+        status,
         isRead: false,
+        isTrashed: false,
+        isStarred: false,
+        isDraft: false,
         sentAt: Date.now(),
         to,
     };
@@ -61,10 +65,10 @@ function _createMails() {
     let mails = storageService.loadFromStorage(STORAGE_KEY);
     if (!mails || !mails.length) {
         mails = [];
-        mails.push(_createMail('Liran was here', 'But he is now gone, too bad!', 'Liranpa@apsusmail.com'));
-        mails.push(_createMail('Coding academy', 'Coding academy is the best course among all the coding acadamies courses', 'LidorWa@apsusmail.com'));
-        mails.push(_createMail('Matan Lasri', 'Matan Lasri is a nice person, but so does Lihi', 'LidorWa@apsusmail.com'));
-        mails.push(_createMail('Among us', '10 ways to find the mole tutor in the whatsapp group', 'LidorWa@apsusmail.com'));
+        mails.push(_createMail('Liran was here', 'But he is now gone, too bad!', 'sent', 'Liranpa@apsusmail.com'));
+        mails.push(_createMail('Coding academy', 'Coding academy is the best course among all the coding acadamies courses','inbox', 'LidorWa@apsusmail.com'));
+        mails.push(_createMail('Matan Lasri', 'Matan Lasri is a nice person, but so does Lihi','inbox', 'LidorWa@apsusmail.com'));
+        mails.push(_createMail('Among us', '10 ways to find the mole tutor in the whatsapp group','sent', 'LidorWa@apsusmail.com'));
         storageService.postMany(STORAGE_KEY, mails);
     }
     return mails;
