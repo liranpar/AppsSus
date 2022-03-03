@@ -5,6 +5,7 @@ import appHome from "./pages/app-home.cmp.js";
 import appAbout from "./pages/app-about.cmp.js";
 import mailIndex from "./apps/mail/pages/mail-index.cmp.js"
 import noteIndex from "./apps/keep/pages/note-index.cmp.js"
+import mailDetails from "./apps/mail/pages/mail-details.cmp.js"
 
 const routes = [
   {
@@ -18,6 +19,12 @@ const routes = [
   {
     path: "/mail",
     component: mailIndex,
+    children: [
+      {
+      path: "/maildetails",
+      component: mailDetails,
+    },
+  ]
   },
   {
     path: "/keep",
