@@ -57,7 +57,15 @@ function _createNotes() {
         type: "text",
         content: "my first note!",
         style: {
-          backgroundColor: "rgb(89, 186, 216)",
+          backgroundColor: "aqua",
+        },
+      },
+      {
+        id: "fdSg00nJ",
+        type: "list",
+        content: ["pay the bills", "shopping", "fix the car"],
+        style: {
+          backgroundColor: "lightblue",
         },
       },
       {
@@ -79,6 +87,15 @@ function _createNotes() {
         },
       },
       {
+        id: "sdSg04HJ",
+        type: "text",
+        content: "turn off the boiler",
+
+        style: {
+          backgroundColor: "lightsalmon",
+        },
+      },
+      {
         id: "fdSg34HJ",
         type: "image",
         content:
@@ -90,8 +107,7 @@ function _createNotes() {
       {
         id: "fdSg94HJ",
         type: "text",
-        content:
-          "LIDORRRRRRRRRRRRRRRRRR RRRRRRRRRRRRRRRR RRRRRRRRRRRRRRRR RRRRRRRRRRRRRR",
+        content: "Walk only on lighted paths!",
 
         style: {
           backgroundColor: "yellow",
@@ -100,9 +116,9 @@ function _createNotes() {
       {
         id: "fdSg58HJ",
         type: "list",
-        content: ["make a nice App", "Drink beer", "Sleep 7 hours"],
+        content: ["make an amazing App", "Drink beer", "Sleep 7 hours"],
         style: {
-          backgroundColor: "red",
+          backgroundColor: "lightgreen",
         },
       },
       // {

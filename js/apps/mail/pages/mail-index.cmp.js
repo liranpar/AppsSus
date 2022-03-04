@@ -1,4 +1,6 @@
 import { mailService } from "../services/mail.service.cmp.js";
+import { eventBus } from "../../../services/eventBus-service.js";
+
 import mailList from "../cmps/mail-list.cmp.js";
 import mailFolderList from "../cmps/mail-folder-list.cmp.js";
 import mailCompose from "../cmps/mail-compose.cmp.js";
@@ -40,7 +42,11 @@ export default {
       var currMail = this.mails.find((mail) => mail.id === mailId);
       currMail.isRead = !currMail.isRead;
       mailService.save(currMail).then((res) => {
-        console.log("mail read");
+        if (!currMail.isRead) {
+          eventBus.emit("show-msg", "Mail set as unread");
+        } else {
+          eventBus.emit("show-msg", "Mail set as read");
+        }
       });
     },
     removeMail(mailId) {
@@ -48,13 +54,13 @@ export default {
       if (currMail.status !== "removed") {
         currMail.status = "removed";
         mailService.save(currMail).then((res) => {
-          console.log("mail removed");
+          eventBus.emit("show-msg", "Mail moved to Deleted folder");
         });
       } else {
         var currMailIndex = this.mails.findIndex((mail) => mail.id === mailId);
         this.mails.splice(currMailIndex, 1);
         mailService.remove(mailId).then((res) => {
-          console.log("Mail deleted permanently");
+          eventBus.emit("show-msg", "Mail deleted");
         });
       }
     },
@@ -64,7 +70,7 @@ export default {
     sendMail(newMail) {
       mailService.save(newMail);
       this.isCompose = !this.isCompose;
-      console.log("newMail inside sendMail inside mail-index", newMail);
+      eventBus.emit("show-msg", "Mail sent");
       this.mails.unshift(newMail);
     },
   },

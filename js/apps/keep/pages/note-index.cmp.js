@@ -1,4 +1,6 @@
 import { noteService } from "../services/note.service.cmp.js";
+import { eventBus } from "../../../services/eventBus-service.js";
+
 import noteFilter from "../cmps/note-filter.cmp.js";
 import addNote from "../cmps/add-note.cmp.js";
 import noteList from "../cmps/note-list.cmp.js";
@@ -45,13 +47,13 @@ export default {
       this.notes.splice(noteIdx, 1);
       this.notes.unshift(noteCopy);
       noteService.pinNote(noteId, noteCopy).then((res) => {
-        console.log("Note pinned");
+        eventBus.emit("show-msg", "Note pinned");
       });
     },
     removeNote(noteId) {
       let noteIdx = this.notes.findIndex((note) => note.id === noteId);
       noteService.remove(noteId).then((res) => {
-        console.log("Note removed");
+        eventBus.emit("show-msg", "Note removed");
       });
       this.notes.splice(noteIdx, 1);
       console.log(noteIdx);
@@ -63,7 +65,7 @@ export default {
       let noteIdx = this.notes.findIndex((note) => note.id === noteId);
       this.notes[noteIdx].content.unshift(itemVal);
       noteService.save(this.notes[noteIdx]).then((res) => {
-        console.log("Item added to list");
+        eventBus.emit("show-msg", "Item added to list");
       });
     },
     removeListItem(data) {
@@ -72,7 +74,7 @@ export default {
       let noteIdx = this.notes.findIndex((note) => note.id === noteId);
       this.notes[noteIdx].content.splice(idx, 1);
       noteService.save(this.notes[noteIdx]).then((res) => {
-        console.log("Item removed from list");
+        eventBus.emit("show-msg", "Item removed from list");
       });
     },
     setFilter(filterBy) {
@@ -81,7 +83,7 @@ export default {
     addNote(note) {
       this.notes.unshift(note);
       noteService.addNewNote(note).then((res) => {
-        console.log("Note added");
+        eventBus.emit("show-msg", "Note added");
       });
     },
   },
