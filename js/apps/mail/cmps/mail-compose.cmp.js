@@ -2,10 +2,10 @@ import { mailService } from "../services/mail.service.cmp.js";
 
 export default {
   template: `
-        <section class="mail-compose-modal" @click="closeModal">
+        <section class="mail-compose-modal">
             <section class="mail-compose">
-                <section  class="mail-to">
-                    <input v-model="newMail.to" type='text' name="to" placeholder='Send Email to:'>
+                <section class="mail-to">
+                    <input v-model="newMail.receiver" type='text' name="to" placeholder='Send Email to:'>
                 </section>
                 <section class="mail-subject">
                     <input v-model="newMail.subject" type='text' name="subject" placeholder="Enter subject">
@@ -40,7 +40,7 @@ export default {
     sendMail() {
       const mailRegex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
       console.log(mailRegex.test(this.newMail.to));
-      if (!mailRegex.test(this.newMail.to)) {
+      if (!mailRegex.test(this.newMail.receiver)) {
         alert("You didnt provide a valid Email address! fucker.");
         return;
       }

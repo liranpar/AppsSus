@@ -50,7 +50,7 @@ function _setNextPrevMailId(mail) {
 
 // Factory Method:
 
-function getEmptyMail(subject = '', body = '', status = 'sent', sender = { email: '', name: ''}, receiver = {email: '',name: '',}) {
+function getEmptyMail(subject = '', body = '', status = 'sent', sender = { email: '', name: '' }, receiver = '') {
   return {
     id: null,
     subject,
@@ -79,11 +79,7 @@ function _createMails() {
           email: loggedInUser.email,
           name: loggedInUser.fullName,
         },
-        {
-          email: "Liranpa@apsusmail.com",
-          name: 'Liran Pa',
-        },
-        
+        "Liranpa@apsusmail.com",
       )
     );
     mails.push(
@@ -92,13 +88,10 @@ function _createMails() {
         "Coding academy is the best course among all the coding acadamies courses",
         "inbox",
         {
-          email:'matanc@codingac.com',
-          name:'Matan krispi',
+          email: 'matanc@codingac.com',
+          name: 'Matan krispi',
         },
-        {
-          email: loggedInUser.email,
-          name: loggedInUser.fullName,
-        },
+        loggedInUser.email,
       )
     );
     mails.push(
@@ -107,13 +100,10 @@ function _createMails() {
         "Matan Lasri is a nice person, but so does Lihi",
         "inbox",
         {
-          email:'matanc@codingac.com',
-          name:'Matan krispi',
+          email: 'matanc@codingac.com',
+          name: 'Matan krispi',
         },
-        {
-          email: loggedInUser.email,
-          name: loggedInUser.fullName,
-        },
+        loggedInUser.email,
 
       )
     );
@@ -126,10 +116,7 @@ function _createMails() {
           email: loggedInUser.email,
           name: loggedInUser.fullName,
         },
-        {
-          email: "Liranpa@apsusmail.com",
-          name: 'Liran Pa',
-        },
+          'Liranpa@apsusmail.com'
       )
     );
     storageService.postMany(STORAGE_KEY, mails);
@@ -137,8 +124,8 @@ function _createMails() {
   return mails;
 }
 
-function _createMail(subject, body, status, to) {
-  let mail = getEmptyMail(subject, body, status, to);
+function _createMail(subject, body, status, sender, receiver) {
+  let mail = getEmptyMail(subject, body, status, sender, receiver);
   console.log(mail.sentAt);
   mail.id = storageService.makeId();
   console.log(mail.sentAt);
