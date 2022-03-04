@@ -1,24 +1,39 @@
-.main-mail-page{
-    display: flex;
+.main-mail-page {
+  display: flex;
 }
 
-.compose-and-folder{
-    display: flex;
-    flex-direction: column;
-    position: sticky;
+.compose-and-folder {
+  display: flex;
+  flex-direction: column;
+  position: sticky;
 }
 
-.mail-folder-list-ul{
-    list-style: none;
-}
-.mail-folder-list-ul li{
-    border-top-right-radius: 100px;
-    border-bottom-right-radius: 100px;
-    background-color: #fce8e6;
-    padding: 10px 30px;
+.compose-btn {
+  height: 50px;
+  text-align: center;
+  vertical-align: 50px;
+  line-height: 25px;
+  background-color: rgb(96, 224, 139);
+  margin: 10px;
+  padding: 10px;
+  border-radius: 15px;
+  cursor: pointer;
+  transition: 0.2s;
 }
 
-.mail-folder-list-ul:hover{
-    cursor: pointer;
+.compose-btn:hover {
+  background-color: rgb(96, 224, 186);
 }
 
+.mail-folder-list-ul {
+  list-style: none;
+  padding: 0;
+}
+.mail-folder-list-ul li {
+  background-color: #fce8e6;
+  padding: 10px 30px;
+}
+
+.mail-folder-list-ul:hover {
+  cursor: pointer;
+}

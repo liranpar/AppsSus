@@ -10,7 +10,7 @@ export default {
   template: `
         <section class="main-mail-page">
             <section class="compose-and-folder">
-            <button v-if="!isCompose" class="compose-btn" @click="isCompose = !isCompose" >+ compose </button>
+            <div v-if="!isCompose" class="compose-btn" @click="isCompose = !isCompose" >➕ Compose </div>
                 <mail-compose v-if="isCompose" @closeModal="isCompose=!isCompose" @sendMail="sendMail"/>
                 <mail-folder-list @setFilter="setFilter"/>
             </section>

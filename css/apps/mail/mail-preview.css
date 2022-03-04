@@ -2,11 +2,9 @@
   display: flex;
   justify-content: space-between;
   width: 85vw;
-  background-color: rgb(230, 230, 230);
-  border: 1px solid;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  border: none;
+  background-color: rgb(239 239 239);
+  border: solid 0.5px rgb(224, 224, 224);
+  padding: 5px;
   max-width: 100%;
   cursor: pointer;
   transition: 0.2s;
@@ -23,8 +21,11 @@ a {
 
 .mail-preview-mail {
   display: flex;
+  flex-direction: column;
+  /* align-items: center; */
   justify-content: space-between;
-  gap: 10px;
+  gap: 5px;
+  font-size: 0.8rem;
 }
 
 .mail-subject {
@@ -33,6 +34,16 @@ a {
 
 .mail-time {
   margin-right: 10px;
+}
+
+.actions-time {
+  display: flex;
+  flex-direction: column;
+  margin-left: 10px;
+}
+
+.actions-time button {
+  height: 25px;
 }
 
 .unread {
@@ -46,4 +57,49 @@ a {
 
 .mail-subject {
   font-style: italic;
+}
+
+/* Break Point!
+Break Point!
+Break Point!
+Break Point! */
+
+@media (min-width: 420px) {
+  .mail-preview-mail {
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    justify-content: space-between;
+    font-size: 1rem;
+  }
+}
+
+/* Break Point!
+Break Point!
+Break Point!
+Break Point! */
+
+@media (min-width: 660px) {
+  .mail-preview {
+    border: none;
+  }
+}
+
+/* Break Point!
+Break Point!
+Break Point!
+Break Point! */
+
+@media (min-width: 760px) {
+  .mail-preview-mail {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 10px;
+  }
+
+  .actions-time {
+    display: flex;
+    flex-direction: row;
+  }
 }

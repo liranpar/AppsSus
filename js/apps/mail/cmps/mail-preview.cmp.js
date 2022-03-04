@@ -2,19 +2,19 @@ export default {
   props: ["mail"],
   emits: ["removeMail", "setToReadNotRead"],
   template: `
-        
           <div class="mail-preview" :class="{ unreadBgc: !mail.isRead }" >
-          <router-link :to="'/mail/'+mail.id">
-            <div class="mail-preview-mail">
-              <span class="senders-name">{{checkSendReceive(mail)}}</span><span class="mail-subject" :class="{ unread: !mail.isRead }"  >
-              {{mail.subject}} - </span> <span class="mail-body" :class="{ unread: !mail.isRead }">{{bodyLength(mail)}} </span>
-            </div>
-            </router-link>  
-            <div class="actions-time">
+              <router-link :to="'/mail/'+mail.id">
+                  <div class="mail-preview-mail">
+                      <span class="senders-name">{{checkSendReceive(mail)}}</span>
+                      <span class="mail-subject" :class="{ unread: !mail.isRead }">{{mail.subject}}</span>
+                      <span class="mail-body" :class="{ unread: !mail.isRead }">{{bodyLength(mail)}} </span>
+                  </div>
+              </router-link>  
+              <div class="actions-time">
                 <span class="mail-time">{{getTimeForDisplay()}}</span>
-                <button @click="setToReadNotRead(mail.id)">Envelope</button>
-                <button @click="removeMail(mail.id)">X</button>
-          </div>
+                <button   @click="setToReadNotRead(mail.id)">✉</button>
+                <button @click="removeMail(mail.id)">❌</button>
+              </div>
         </div>
         
 `,
@@ -66,15 +66,14 @@ export default {
       return this.padTo2Digits(this.hours + ":" + this.minutes);
     },
     bodyLength(mail) {
-      if (mail.body.length > 50) return mail.body.slice(0, 70) + " ...";
+      if (mail.body.length > 50) return mail.body.slice(0, 47) + " ...";
       return mail.body;
     },
-    checkSendReceive(mail){
-      if (mail.status === 'sent'){
-        return 'To: ' + mail.receiver;
-      } else
-      return mail.sender.name;
-    }
+    checkSendReceive(mail) {
+      if (mail.status === "sent") {
+        return "To: " + mail.receiver;
+      } else return mail.sender.name;
+    },
   },
 };
 
