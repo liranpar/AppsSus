@@ -4,13 +4,13 @@ export default {
           <section>  
              <ul>
                  <li v-for="(item, idx) in note.content" >
-                   <button class="delet-item" @click="removeListItem(idx)" >x</button>
+                   <span class="delete-item" @click="removeListItem(idx)" >x</span>
                    {{item}}               
                  </li>
-                 <button  v-if="!isAdding" @click="onAdd" >Add</button>
-                 <div v-if="isAdding" >
-                   <input type="text" v-model="addingVal" >
-                   <button @click="addItem" >add</button><button @click="closeInput" >X</button>
+                 <span  v-if="!isAdding"  class="list-btn" @click="onAdd" >Add to list</span>
+                 <div v-if="isAdding" class="adding-item-to-list-cont"  >
+                   <input type="text"  @keyup.enter="addItem" v-model="addingVal" >
+                   <span class="list-btn"  @click="addItem" >add</span><span class="list-btn"  @click="closeInput" >X</span>
                  </div>
              </ul>
           </section>
@@ -28,6 +28,7 @@ export default {
       this.addingVal = "";
     },
     addItem() {
+      if (!this.addingVal.trim()) return;
       this.$emit("addItemToList", [this.addingVal, this.note.id]);
       this.isAdding = false;
       this.addingVal = "";
