@@ -1,12 +1,16 @@
 export default {
   template: `
         <section class="add-note">  
-            <label class="new-note-lable" for="new">New note</label>
-           <input @keyup.enter="addNote" id="new" v-model="note.content" :placeholder="getPlaceholder">
-           <span class="type" :class="{ selected: isSelecedType.text }"  @click="setTypeTxt" >txt</span>
-           <span class="type" :class="{ selected: isSelecedType.image }" @click="setTypeImg" >img</span>
-           <span class="type" :class="{ selected: isSelecedType.list }"  @click="setTypeList" >list</span>
-           <span @click="addNote" class="add-btn" >Add</span>
+          <div class="add-input-cont" >
+             <label class="new-note-lable" for="new">New note</label>
+             <input @keyup.enter="addNote" id="new" v-model="note.content" :placeholder="getPlaceholder">
+          </div>
+          <div class="add-btns-cont" >
+            <span class="type" :class="{ selected: isSelecedType.text }"  @click="setTypeTxt" >txt</span>
+            <span class="type" :class="{ selected: isSelecedType.image }" @click="setTypeImg" >img</span>
+            <span class="type" :class="{ selected: isSelecedType.list }"  @click="setTypeList" >list</span>
+            <span @click="addNote" class="add-btn" >Add</span>
+          </div>
         </section>
         `,
   data() {
