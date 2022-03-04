@@ -6,7 +6,7 @@ export default {
           <div class="mail-preview" :class="{ unreadBgc: !mail.isRead }" >
           <router-link :to="'/mail/'+mail.id">
             <div class="mail-preview-mail">
-              <span class="senders-name"></span><span class="mail-subject" :class="{ unread: !mail.isRead }"  >
+              <span class="senders-name">{{checkSendReceive(mail)}}</span><span class="mail-subject" :class="{ unread: !mail.isRead }"  >
               {{mail.subject}} - </span> <span class="mail-body" :class="{ unread: !mail.isRead }">{{bodyLength(mail)}} </span>
             </div>
             </router-link>  
@@ -69,8 +69,13 @@ export default {
       if (mail.body.length > 50) return mail.body.slice(0, 70) + " ...";
       return mail.body;
     },
+    checkSendReceive(mail){
+      if (mail.status === 'sent'){
+        return 'To: ' + mail.receiver;
+      } else
+      return mail.sender.name;
+    }
   },
 };
 
-// TODO: when the mail received is from today, show the hour it was sent.
-// if it is from yesterday and below - show the date.
+// TODO: when decreasing window width, text should be sliced (and not dropped to another line)
