@@ -2,15 +2,20 @@ export default {
   props: ["mail"],
   emits: ["removeMail"],
   template: `
-        <router-link :to="'/mail/'+mail.id" >
-        <div class="mail-preview"><span class="senders-name"></span><span class="mail-subject">
-        {{mail.subject}}</span> <span class="mail-body">{{mail.body}} </span><span class="mail-time">{{getTimeForDisplay()}}</span>
-        </div>
-        </router-link>  
-        <span class="actions">
+        
+          <div class="mail-preview">
+          <router-link :to="'/mail/'+mail.id">
+            <div class="mail-preview-mail">
+              <span class="senders-name"></span><span class="mail-subject">
+              {{mail.subject}} - </span> <span class="mail-body">{{bodyLength(mail)}} </span>
+            </div>
+            </router-link>  
+            <div class="actions-time">
+                <span class="mail-time">{{getTimeForDisplay()}}</span>
                 <button @click="setToReadNotRead(mail.id)">Envelope</button>
                 <button @click="removeMail(mail.id)">X</button>
-        </span>
+          </div>
+        </div>
         
 `,
   data() {
@@ -29,9 +34,24 @@ export default {
       return String(num).padStart(2, "0");
     },
     getTimeForDisplay() {
+      let months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct','Nov', 'Dec']
+      let dayToCompare = 1000*60*60*24;
+      let date = new Date(this.mail.sentAt).getDate()+1;
+      let month = new Date(this.mail.sentAt).getMonth(); 
+      let dayOfWeek = new Date().getDay();
+      let dayOfMail = new Date(this.mail.sentAt).getDay()
+
+      if (Date.now() - this.mail.sentAt > dayToCompare || dayOfWeek !== dayOfMail){
+        return months[month] + ', ' + date; 
+      }
       return this.padTo2Digits(this.hours + ":" + this.minutes);
     },
-  },
+    bodyLength(mail) {
+      if (mail.body.length > 50)
+        return mail.body.slice(0, 70) +' ...';
+      return mail.body;
+    },
+  }
 };
 
 // TODO: when the mail received is from today, show the hour it was sent.

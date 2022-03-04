@@ -7,6 +7,7 @@ export default {
     <h3>{{ currMail.to }}</h3>
     <p>{{ currMail.body }}</p>
     <button class="remove-within-details" @click="removeEmail"> Delete mail </button>
+    <button @click="backToList">Back</button>
 </section>
 `,
   data() {
@@ -29,6 +30,9 @@ export default {
         mailService.remove(this.currMail.id)
       }
       this.$router.push('/mail')
+    },
+    backToList () {
+      this.$router.push('/mail');
     }
   },
   computed: {
