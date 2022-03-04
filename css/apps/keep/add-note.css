@@ -12,6 +12,7 @@
 .new-note-lable {
   font-size: 1.1rem;
   margin-right: 10px;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }
 
 .add-note input {
@@ -24,11 +25,14 @@
   padding: 5px;
   transition: 0.2s;
   margin-left: 10px;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-weight: bold;
 }
 
 .add-btn:hover {
   cursor: pointer;
-  background-color: rgb(174, 248, 223);
+  background-color: rgb(3, 104, 57);
+  color: azure;
 }
 
 .type {
@@ -36,6 +40,7 @@
   padding: 5px;
   margin: 3px;
   transition: 0.25s;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }
 
 .selected {
