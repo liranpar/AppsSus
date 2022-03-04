@@ -38,7 +38,10 @@ a {
 .unread {
   font-weight: bold;
   font-style: normal;
-  background-color: beige;
+}
+
+.unreadBgc {
+  background-color: rgb(255, 255, 255);
 }
 
 .mail-subject {
