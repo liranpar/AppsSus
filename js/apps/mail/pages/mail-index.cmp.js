@@ -12,7 +12,7 @@ export default {
                 <mail-compose v-if="isCompose" @closeModal="isCompose=!isCompose" @sendMail="sendMail"/>
                 <mail-folder-list @setFilter="setFilter"/>
             </section>
-            <mail-list v-if="mails" :mails="mailsToDisplay" @removeMail="removeMail" />
+            <mail-list v-if="mails" :mails="mailsToDisplay" @removeMail="removeMail"  @setToReadNotRead="setToReadNotRead" />
         </section>
 `,
   components: {
@@ -36,6 +36,13 @@ export default {
     mailService.query().then((mails) => (this.mails = mails));
   },
   methods: {
+    setToReadNotRead(mailId) {
+      var currMail = this.mails.find((mail) => mail.id === mailId);
+      currMail.isRead = !currMail.isRead;
+      mailService.save(currMail).then((res) => {
+        console.log("mail read");
+      });
+    },
     removeMail(mailId) {
       var currMail = this.mails.find((mail) => mail.id === mailId);
       if (currMail.status !== "removed") {

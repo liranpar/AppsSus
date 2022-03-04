@@ -1,3 +1,8 @@
+/* @font-face {
+  font-family: note-font;
+  src: url(../../../assets/fonts/itim/Itim-Regular.ttf);
+} */
+
 button {
   cursor: pointer;
 }
@@ -12,6 +17,7 @@ ul {
 p {
   text-align: center;
   font-size: 1.4rem;
+  /* font-family: note-font; */
 }
 
 .notes-cont {

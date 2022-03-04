@@ -18,22 +18,24 @@ export default {
   created() {
     mailService.get(this.mailId).then((mail) => {
       this.currMail = mail;
+      this.currMail.isRead = true;
+      mailService.save(this.currMail);
       console.log(this.currMail);
     });
   },
   methods: {
-    removeEmail (){
-      if (this.currMail.status !== 'removed'){
-        this.currMail.status = 'removed';
-        mailService.save(this.currMail)
+    removeEmail() {
+      if (this.currMail.status !== "removed") {
+        this.currMail.status = "removed";
+        mailService.save(this.currMail);
       } else {
-        mailService.remove(this.currMail.id)
+        mailService.remove(this.currMail.id);
       }
-      this.$router.push('/mail')
+      this.$router.push("/mail");
     },
-    backToList () {
-      this.$router.push('/mail');
-    }
+    backToList() {
+      this.$router.push("/mail");
+    },
   },
   computed: {
     mailId() {

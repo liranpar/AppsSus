@@ -5,7 +5,7 @@ export default {
         <section class="mail-list">
             <ul class="mail-list-ul">
                 <li v-for="mail in mails" :key="mail.id" class="mail-preview-container">
-                   <mail-preview :mail="mail" @removeMail="removeMail" />
+                   <mail-preview :mail="mail" @removeMail="removeMail" @setToReadNotRead="setToReadNotRead" />
 
                 </li>
             </ul>
@@ -19,6 +19,9 @@ export default {
   },
   created() {},
   methods: {
+    setToReadNotRead(mailId) {
+      this.$emit("setToReadNotRead", mailId);
+    },
     removeMail(mailId) {
       this.$emit("removeMail", mailId);
     },
