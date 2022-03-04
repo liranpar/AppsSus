@@ -3,7 +3,7 @@ export default {
   emits: ["removeMail", "setToReadNotRead"],
   template: `
         
-          <div class="mail-preview">
+          <div class="mail-preview" :class="{ unreadBgc: !mail.isRead }" >
           <router-link :to="'/mail/'+mail.id">
             <div class="mail-preview-mail">
               <span class="senders-name"></span><span class="mail-subject" :class="{ unread: !mail.isRead }"  >
