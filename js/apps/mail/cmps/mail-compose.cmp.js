@@ -2,7 +2,7 @@ import { mailService } from "../services/mail.service.cmp.js";
 
 export default {
   template: `
-        <section class="mail-compose-modal">
+        <section class="mail-compose-modal" @click="closeModal">
             <section class="mail-compose">
                 <section  class="mail-to">
                     <input v-model="newMail.to" type='text' name="to" placeholder='Send Email to:'>

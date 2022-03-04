@@ -50,7 +50,7 @@ function _setNextPrevMailId(mail) {
 
 // Factory Method:
 
-function getEmptyMail(subject = "", body = "", status = "sent", SendersName = "", sendersEmail="", to = "") {
+function getEmptyMail(subject = '', body = '', status = 'sent', sender = { email: '', name: ''}, receiver = {email: '',name: '',}) {
   return {
     id: null,
     subject,
@@ -61,14 +61,8 @@ function getEmptyMail(subject = "", body = "", status = "sent", SendersName = ""
     isStarred: false,
     isDraft: false,
     sentAt: Date.now(),
-    sender: {
-      email: '',
-      name: ''
-    },
-    receiver: {
-      email: '',
-      name: '',
-    }
+    sender,
+    receiver,
   };
 }
 
@@ -81,9 +75,15 @@ function _createMails() {
         "Liran was here",
         "But he is now gone, too bad!",
         "sent",
-        loggedInUser.fullName,
-        loggedInUser.email,
-        "Liranpa@apsusmail.com"
+        {
+          email: loggedInUser.email,
+          name: loggedInUser.fullName,
+        },
+        {
+          email: "Liranpa@apsusmail.com",
+          name: 'Liran Pa',
+        },
+        
       )
     );
     mails.push(
@@ -91,9 +91,14 @@ function _createMails() {
         "Coding academy",
         "Coding academy is the best course among all the coding acadamies courses",
         "inbox",
-        'Matan kripsi',
-        'matanc@codingac.com',
-
+        {
+          email:'matanc@codingac.com',
+          name:'Matan krispi',
+        },
+        {
+          email: loggedInUser.email,
+          name: loggedInUser.fullName,
+        },
       )
     );
     mails.push(
@@ -101,7 +106,15 @@ function _createMails() {
         "Matan Lasri",
         "Matan Lasri is a nice person, but so does Lihi",
         "inbox",
-        "LidorWa@apsusmail.com"
+        {
+          email:'matanc@codingac.com',
+          name:'Matan krispi',
+        },
+        {
+          email: loggedInUser.email,
+          name: loggedInUser.fullName,
+        },
+
       )
     );
     mails.push(
@@ -109,7 +122,14 @@ function _createMails() {
         "Among us",
         "10 ways to find the mole tutor in the whatsapp group",
         "sent",
-        "LidorWa@apsusmail.com"
+        {
+          email: loggedInUser.email,
+          name: loggedInUser.fullName,
+        },
+        {
+          email: "Liranpa@apsusmail.com",
+          name: 'Liran Pa',
+        },
       )
     );
     storageService.postMany(STORAGE_KEY, mails);
