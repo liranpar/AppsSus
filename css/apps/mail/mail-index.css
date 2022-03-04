@@ -22,8 +22,7 @@
     cursor: pointer;
 }
 
-
-.mail-compose {
+.mail-compose-modal {
     position: fixed;
     top: 0;
     bottom: 0;
@@ -33,10 +32,31 @@
     color: whitesmoke;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-    padding: 5px;
+    justify-content: center;
     line-height: 1.5em;
     font-weight: bold;
     font-size: 1.2rem;
+}
+
+.mail-compose {
+    display: flex;
+    flex-direction: column;
+    background-color: gray;
+    width: 63vw;
+    height: 74vh;
+    text-align: center;
+}
+.mail-compose input{
+    width: 60vw;
+}
+
+.mail-compose textarea{
+    width: 60vw;
+    height: 60vh;
+}
+
+.mail-compose button{
+    width: 100px;
+    align-self: center;
 }

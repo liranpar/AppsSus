@@ -14,6 +14,7 @@ export const mailService = {
   save,
   get,
   getEmptyMail,
+  getLoggedinUser,
 };
 
 function query() {
@@ -33,6 +34,9 @@ function save(mail) {
   else return storageService.post(STORAGE_KEY, mail);
 }
 
+function getLoggedinUser() {
+  return loggedInUser;
+}
 function _setNextPrevMailId(mail) {
   return storageService.query(STORAGE_KEY).then((mails) => {
     const mailIdx = mails.findIndex((currMail) => currMail.id === mail.id);
@@ -46,7 +50,7 @@ function _setNextPrevMailId(mail) {
 
 // Factory Method:
 
-function getEmptyMail(subject = "", body = "", status = "sent", to = "") {
+function getEmptyMail(subject = "", body = "", status = "sent", SendersName = "", sendersEmail="", to = "") {
   return {
     id: null,
     subject,
@@ -57,7 +61,14 @@ function getEmptyMail(subject = "", body = "", status = "sent", to = "") {
     isStarred: false,
     isDraft: false,
     sentAt: Date.now(),
-    to,
+    sender: {
+      email: '',
+      name: ''
+    },
+    receiver: {
+      email: '',
+      name: '',
+    }
   };
 }
 
@@ -70,6 +81,8 @@ function _createMails() {
         "Liran was here",
         "But he is now gone, too bad!",
         "sent",
+        loggedInUser.fullName,
+        loggedInUser.email,
         "Liranpa@apsusmail.com"
       )
     );
@@ -78,7 +91,9 @@ function _createMails() {
         "Coding academy",
         "Coding academy is the best course among all the coding acadamies courses",
         "inbox",
-        "LidorWa@apsusmail.com"
+        'Matan kripsi',
+        'matanc@codingac.com',
+
       )
     );
     mails.push(
