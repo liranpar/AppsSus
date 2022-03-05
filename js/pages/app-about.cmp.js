@@ -13,7 +13,7 @@ export default {
             <p class="about-div-p">Liran Parti</p>
             <p class="about-div-p role" >CTO</p>
             <div class="image-div" >
-                <img src="../assets/images/liran.jpg" alt="">
+                <img src="assets/images/liran.jpg" alt="">
             </div>
             <p class="description" >Liran is an outstanding student at the leading college Codding-Accademy, and a future promising Full Stack Developer.</p>
         </div>
@@ -21,7 +21,7 @@ export default {
             <p class="about-div-p">Lidor Waldman</p>
             <p class="about-div-p role">CEO</p>
             <div class="image-div" >
-                <img src="../assets/images/lidor.jpg" alt="">
+                <img src="assets/images/lidor.jpg" alt="">
             </div>
             <p class="description" >Lidor is a leading troll. He likes beer, hamburger, router links and flex directions. Master at event bus features.</p>
         </div>
