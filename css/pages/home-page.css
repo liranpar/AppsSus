@@ -1,0 +1,10 @@
+
+.about-images{
+    display: flex;
+    justify-content: center;
+    gap:10px;
+}
+.about-images img{
+    width: 250px;
+    height: 220px;
+}
