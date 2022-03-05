@@ -50,5 +50,4 @@ export default {
   },
 };
 
-// TODO: when clicking "back" or deleteing an email - it should go back to the relevant filter
-// (if the mail was in inbox - gp back to inbox, if sent - go back to sent folder)
+
