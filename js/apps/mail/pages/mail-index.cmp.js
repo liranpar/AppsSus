@@ -9,6 +9,11 @@ import mailDetails from "./mail-details.cmp.js";
 export default {
   template: `
         <section class="main-mail-page">
+          <section class="search-input">
+            <label for="search-mail">
+              <input name="search-mail" type="text">
+            </label>
+          </section>
           <section class="compose-and-folder">
              <div v-if="!isCompose" class="compose-btn" @click="isCompose = !isCompose"  @mouseover="hover = true"  @mouseleave="hover = false">
                   <span>➕</span><span v-if="hover" class="compose-word"> Compose</span>
