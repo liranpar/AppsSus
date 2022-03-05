@@ -36,3 +36,7 @@
 .mail-folder-list-ul:hover {
   cursor: pointer;
 }
+
+.folder-clicked{
+  background-color: red;
+}

@@ -15,6 +15,7 @@ export default {
       filterBy: {
         folder: "inbox",
         text: "",
+        folderClicked: 'folder-clicked'
       },
     };
   },

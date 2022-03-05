@@ -79,3 +79,4 @@ export default {
 };
 
 // TODO: when decreasing window width, text should be sliced (and not dropped to another line)
+// TODO: when in mobile mode, to cancel hovering on the time to show the buttons, and show only the time
