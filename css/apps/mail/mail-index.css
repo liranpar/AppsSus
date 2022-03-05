@@ -2,6 +2,19 @@
   display: flex;
 }
 
+.filter-list-cont {
+  width: calc(100% - 90px);
+  display: flex;
+  flex-direction: column;
+}
+
+.search-input {
+  width: 70%;
+  width: minmax(170px, 300px);
+
+  margin: auto;
+}
+
 .compose-and-folder {
   display: flex;
   flex-direction: column;
@@ -63,6 +76,10 @@ Break Point! */
     margin: 10px;
     padding: 5px;
     border-radius: 15px;
+  }
+
+  .filter-list-cont {
+    width: calc(100% - 140px);
   }
 
   .compose-word {
