@@ -38,6 +38,16 @@
   height: 80px;
   padding: 5px;
   box-sizing: border-box;
+  text-align: center;
+}
+
+.link {
+  opacity: 0.5;
+  transition: 0.25s;
+}
+
+.link:hover {
+  opacity: 1;
 }
 
 .apps-links-cont {
