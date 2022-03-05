@@ -7,6 +7,7 @@ export default {
                    <div class="apps-links-cont">
                        <span><router-link @click="isClicked = false" class="mail-link" to="/mail">✉</router-link></span>
                        <span><router-link @click="isClicked = false" class="keep-link" to="/keep">📌</router-link></span>
+                       <span><router-link @click="isClicked = false" class="keep-link" to="/book">📚</router-link></span>
                    </div>
                    
                    <span><router-link @click="isClicked = false" to="/">Home</router-link></span>
