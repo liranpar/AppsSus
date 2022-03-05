@@ -2,11 +2,11 @@ export default {
   template: `
         <section class="mail-folder-list">
             <ul class="mail-folder-list-ul">
-                <li @click="setFilter('inbox')" class="folder-list-inbox" :class="{ folderClicked: isSelected('inbox')}" >Inbox</li> <!--<i class="fas fa-inbox">Inbox</i> -->
-                <li @click="setFilter('starred')"  class="folder-list-starred" :class="{ folderClicked: isSelected('inbox')}>Starred</li>
-                <li @click="setFilter('sent')"  class="folder-list-sent-mail" :class="{ folderClicked: isSelected('sent')}>Sent Mail</li>
-                <li @click="setFilter('drafts')" class="folder-list-drafts" :class="{ folderClicked: isSelected('drafts')}>Drafts</li>
-                <li @click="setFilter('removed')" class="folder-list-drafts" :class="{ folderClicked: isSelected('removed')}>Deleted</li>
+                <li @click="setFilter('inbox')" :class="{ folderClicked: isSelected}" >Inbox</li>
+                <li @click="setFilter('starred')" :class="{ folderClicked: isSelected}">Starred</li>
+                <li @click="setFilter('sent')"  :class="{ folderClicked: isSelected}">Sent Mail</li>
+                <li @click="setFilter('drafts')" :class="{ folderClicked: isSelected}">Drafts</li>
+                <li @click="setFilter('removed')" :class="{ folderClicked: isSelected}">Deleted</li>
             </ul>
         </section>
 `,
@@ -15,19 +15,16 @@ export default {
       filterBy: {
         folder: "inbox",
         text: "",
-        folderClicked: "folder-clicked",
       },
-      // isSelecedFolder: {
-      //   text: true,
-      //   image: false,
-      //   list: false,
-      // },
+      folderClicked: "folder-clicked",
+      isInbox: true,
+      isStarred: false,
     };
   },
   created() {},
   methods: {
-    isSeleced(val) {
-      return this.filterBy.folder === val;
+    isSeleced() {
+      this.isSeleced = true;
     },
     setFilter(val) {
       this.filterBy.folder = val;
