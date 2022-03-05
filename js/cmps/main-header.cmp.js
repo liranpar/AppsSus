@@ -3,7 +3,7 @@ import hamburger from "./hamburger.cmp.js";
 export default {
   template: `
         <header class="main-header">
-            <div class="logo-div">Appsus</div>
+            <div class="logo-div"><router-link to="/">Appsus</router-link></div>
             <nav class="nav-bar">
                 <hamburger class="hamburger" ></hamburger>
                 <ul class="nav-bar-ul">
