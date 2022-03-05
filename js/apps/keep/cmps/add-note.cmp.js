@@ -6,7 +6,7 @@ export default {
              <input @keyup.enter="addNote" id="new" v-model="note.content" :placeholder="getPlaceholder">
           </div>
           <div class="add-btns-cont" >
-            <span class="type" :class="{ selected: isSelecedType.text }"  @click="setTypeTxt" >txt</span>
+            <span class="type" :class="{ selected: isSelecedType.text }"  @click="setType(txt)" >txt</span>
             <span class="type" :class="{ selected: isSelecedType.image }" @click="setTypeImg" >img</span>
             <span class="type" :class="{ selected: isSelecedType.list }"  @click="setTypeList" >list</span>
             <span @click="addNote" class="add-btn" >Add</span>
@@ -32,6 +32,8 @@ export default {
   created() {},
   components: {},
   methods: {
+    setType(val) {},
+
     setTypeImg() {
       this.note.type = "image";
       this.isSelecedType = {

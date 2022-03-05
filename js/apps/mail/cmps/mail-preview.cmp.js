@@ -19,7 +19,6 @@ export default {
         
 `,
   data() {
-    console.log(this.mail);
     return {
       hours: new Date(this.mail.sentAt).getHours(),
       minutes: new Date(this.mail.sentAt).getMinutes(),

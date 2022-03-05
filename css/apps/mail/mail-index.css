@@ -38,5 +38,5 @@
 }
 
 .folder-clicked {
-  background-color: red;
+  background-color: rgb(226, 164, 245) !important;
 }
