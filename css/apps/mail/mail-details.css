@@ -47,3 +47,11 @@
 .details-btn:hover {
   background-color: rgb(212, 212, 212);
 }
+
+.mail-content {
+  max-width: 750px;
+  padding: 20px;
+  font-size: 1.1rem;
+  text-align: start;
+  margin: auto;
+}
