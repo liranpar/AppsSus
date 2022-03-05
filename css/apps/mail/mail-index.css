@@ -11,13 +11,17 @@
   height: 50px;
   text-align: center;
   vertical-align: 50px;
-  line-height: 25px;
+  line-height: 40px;
   background-color: rgb(96, 224, 139);
   margin: 10px;
-  padding: 10px;
+  padding: 5px;
   border-radius: 15px;
   cursor: pointer;
   transition: 0.2s;
+}
+
+.compose-word {
+  display: none;
 }
 
 .compose-btn:hover {
@@ -30,7 +34,12 @@
 }
 .mail-folder-list-ul li {
   background-color: #fce8e6;
-  padding: 10px 30px;
+  padding: 3px 9px;
+  transition: 0.25s;
+}
+
+.mail-folder-list-ul li:hover {
+  background-color: rgb(245, 212, 255);
 }
 
 .mail-folder-list-ul:hover {
@@ -38,5 +47,29 @@
 }
 
 .folder-clicked {
-  background-color: rgb(226, 164, 245) !important;
+  background-color: rgb(235, 184, 250) !important;
+}
+
+/* Break Point!
+Break Point!
+Break Point!
+Break Point! */
+
+@media (min-width: 530px) {
+  .compose-btn {
+    height: 50px;
+    vertical-align: 50px;
+    line-height: 40px;
+    margin: 10px;
+    padding: 5px;
+    border-radius: 15px;
+  }
+
+  .compose-word {
+    display: inline;
+  }
+
+  .mail-folder-list-ul li {
+    padding: 10px 30px;
+  }
 }
