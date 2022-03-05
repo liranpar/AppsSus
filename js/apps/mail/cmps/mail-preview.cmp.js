@@ -16,7 +16,6 @@ export default {
                 </div>
               </router-link>  
           </div>
-        
 `,
   data() {
     return {
