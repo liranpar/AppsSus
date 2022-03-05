@@ -10,7 +10,9 @@ export default {
   template: `
         <section class="main-mail-page">
             <section class="compose-and-folder">
-            <div v-if="!isCompose" class="compose-btn" @click="isCompose = !isCompose" >➕ Compose </div>
+            <div v-if="!isCompose" class="compose-btn" @click="isCompose = !isCompose"  @mouseover="hover = true"  @mouseleave="hover = false">
+              <span>➕</span><span v-if="hover"> Compose</span>
+            </div>
                 <mail-compose v-if="isCompose" @closeModal="isCompose=!isCompose" @sendMail="sendMail"/>
                 <mail-folder-list @setFilter="setFilter"/>
             </section>
@@ -32,6 +34,7 @@ export default {
         folder: "inbox",
         text: "",
       },
+      hover: false,
     };
   },
   created() {

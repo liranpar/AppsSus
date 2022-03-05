@@ -2,9 +2,9 @@ import { mailService } from "../services/mail.service.cmp.js";
 
 export default {
   template: `
-<section v-if="currMail" >  
+<section v-if="currMail" class="mail-details">  
     <h1>{{ currMail.subject }}</h1>
-    <!-- <h3>{{ currMail.to }}</h3> -->
+    <h3>{{ currMail.sender.name }}</h3> <span> &#60;{{ currMail.sender.email }}&#62;</span>
     <p>{{ currMail.body }}</p>
     <button class="remove-within-details" @click="removeEmail"> Delete mail </button>
     <button @click="backToList">Back</button>
