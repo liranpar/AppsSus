@@ -6,9 +6,9 @@ export default {
              <input @keyup.enter="addNote" id="new" v-model="note.content" :placeholder="getPlaceholder">
           </div>
           <div class="add-btns-cont" >
-            <span class="type" :class="{ selected: isSelecedType.text }"  @click="setType(txt)" >txt</span>
-            <span class="type" :class="{ selected: isSelecedType.image }" @click="setTypeImg" >img</span>
-            <span class="type" :class="{ selected: isSelecedType.list }"  @click="setTypeList" >list</span>
+            <span class="type" :class="{ selected: isSelecedType.text }"  @click="setType('text')" >txt</span>
+            <span class="type" :class="{ selected: isSelecedType.image }" @click="setType('image')" >img</span>
+            <span class="type" :class="{ selected: isSelecedType.list }"  @click="setType('list')" >list</span>
             <span @click="addNote" class="add-btn" >Add</span>
           </div>
         </section>
@@ -32,39 +32,47 @@ export default {
   created() {},
   components: {},
   methods: {
-    setType(val) {},
+    setType(val) {
+      this.note.type = val;
+      this.isSelecedType = {
+        text: false,
+        image: false,
+        list: false,
+      };
+      this.isSelecedType[val] = true;
+    },
 
-    setTypeImg() {
-      this.note.type = "image";
-      this.isSelecedType = {
-        text: false,
-        image: true,
-        list: false,
-      };
-    },
-    setTypeTxt() {
-      this.note.type = "text";
-      this.isSelecedType = {
-        text: true,
-        image: false,
-        list: false,
-      };
-    },
-    setTypeList() {
-      this.note.type = "list";
-      this.isSelecedType = {
-        text: false,
-        image: false,
-        list: true,
-      };
-    },
+    // setTypeImg() {
+    //   this.note.type = "image";
+    //   this.isSelecedType = {
+    //     text: false,
+    //     image: true,
+    //     list: false,
+    //   };
+    // },
+    // setTypeTxt() {
+    //   this.note.type = "text";
+    //   this.isSelecedType = {
+    //     text: true,
+    //     image: false,
+    //     list: false,
+    //   };
+    // },
+    // setTypeList() {
+    //   this.note.type = "list";
+    //   this.isSelecedType = {
+    //     text: false,
+    //     image: false,
+    //     list: true,
+    //   };
+    // },
     addNote() {
       if (!this.note.content.trim()) return;
       if (this.note.type === "list") {
         this.note.content = this.note.content.split(",");
       }
       this.$emit("addNote", { ...this.note });
-      this.setTypeTxt();
+      this.setType("text");
       this.note.content = "";
     },
   },
