@@ -32,6 +32,12 @@ a {
   font-style: italic;
 }
 
+.space-div {
+  width: calc(100% - 500px);
+  background-color: blueviolet;
+  justify-self: left;
+}
+
 .mail-time {
   margin-right: 10px;
 }
@@ -53,10 +59,6 @@ a {
 
 .unreadBgc {
   background-color: rgb(255, 255, 255);
-}
-
-.mail-subject {
-  font-style: italic;
 }
 
 /* Break Point!

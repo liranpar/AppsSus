@@ -2,22 +2,20 @@ export default {
   props: ["mail"],
   emits: ["removeMail", "setToReadNotRead"],
   template: `
-          <div class="mail-preview" :class="{ unreadBgc: !mail.isRead }" >
-              <router-link :to="'/mail/'+mail.id">
-                  <div class="mail-preview-mail">
+          <div :class="{ unreadBgc: !mail.isRead }" >
+              <router-link  class="mail-preview" :to="'/mail/'+mail.id">
+                <div class="mail-preview-mail">
                       <span class="senders-name">{{checkSendReceive(mail)}}</span>
-                      <span class="mail-subject" :class="{ unread: !mail.isRead }">{{mail.subject}}</span>
+                      <span class="mail-subject" :class="{ unread: !mail.isRead }">{{subjectLength(mail)}}</span>
                       <span class="mail-body" :class="{ unread: !mail.isRead }">{{bodyLength(mail)}} </span>
-                  </div>
+                </div>
+                <div class="actions-time">
+                  <span class="mail-time">{{getTimeForDisplay()}}</span>
+                  <button @click.prevent="setToReadNotRead(mail.id)">✉</button>
+                  <button @click.prevent="removeMail(mail.id)">❌</button>
+                </div>
               </router-link>  
-              <div class="actions-time">
-                <span class="mail-time">{{getTimeForDisplay()}}</span>
-                <span>
-                  <button @click="setToReadNotRead(mail.id)">✉</button>
-                  <button @click="removeMail(mail.id)">❌</button>
-                </span>
-              </div>
-        </div>
+          </div>
         
 `,
   data() {
@@ -68,8 +66,12 @@ export default {
         this.padTo2Digits(this.hours) + ":" + this.padTo2Digits(this.minutes)
       );
     },
+    subjectLength(mail) {
+      if (mail.subject.length > 13) return mail.subject.slice(0, 12) + " ..";
+      return mail.subject;
+    },
     bodyLength(mail) {
-      if (mail.body.length > 40) return mail.body.slice(0, 38) + " ...";
+      if (mail.body.length > 30) return mail.body.slice(0, 28) + " ...";
       return mail.body;
     },
     checkSendReceive(mail) {

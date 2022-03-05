@@ -50,7 +50,13 @@ function _setNextPrevMailId(mail) {
 
 // Factory Method:
 
-function getEmptyMail(subject = '', body = '', status = 'sent', sender = { email: '', name: '' }, receiver = '') {
+function getEmptyMail(
+  subject = "",
+  body = "",
+  status = "sent",
+  sender = { email: "", name: "" },
+  receiver = ""
+) {
   return {
     id: null,
     subject,
@@ -74,8 +80,6 @@ function _createMail(subject, body, status, sender, receiver) {
   return mail;
 }
 
-
-
 // hardcoded emails:
 
 function _createMails() {
@@ -91,7 +95,7 @@ function _createMails() {
           email: loggedInUser.email,
           name: loggedInUser.fullName,
         },
-        "Liranpa@apsusmail.com",
+        "Liranpa@apsusmail.com"
       )
     );
     mails.push(
@@ -100,136 +104,136 @@ function _createMails() {
         "Coding academy is the best course among all the coding acadamies courses",
         "inbox",
         {
-          email: 'matanc@codingac.com',
-          name: 'Matan krispi',
+          email: "matanc@codingac.com",
+          name: "Matan krispi",
         },
-        loggedInUser.email,
+        loggedInUser.email
       )
     );
     mails.push(
       _createMail(
-        'Hey, i just met you',
-        'And this is crazy! so here is my number, and call me maybe!',
-        'inbox',
+        "Hey, i just met you",
+        "And this is crazy! so here is my number, and call me maybe!",
+        "inbox",
         {
-          email: 'angelina@gmail.com',
-          name: 'Angelina Julie',
+          email: "angelina@gmail.com",
+          name: "Angelina Julie",
         },
-        loggedInUser.email,
+        loggedInUser.email
       )
     );
     mails.push(
       _createMail(
-        'Need your help!',
+        "Need your help!",
         `Hello dear friend, i am prince zulurando from Nigeria. the govrmnt ez cumming after me,
         i need you to send me your credit card number so i can escape the country, you bring me to your country,
         and i will give you 1million dollar in used plastic from my plastic mines`,
-        'inbox',
+        "inbox",
         {
-          email: 'zulurando@nigerianprince.com',
-          name: 'zulurando shaka',
+          email: "zulurando@nigerianprince.com",
+          name: "zulurando shaka",
         },
-        loggedInUser.email,
+        loggedInUser.email
       )
     );
     mails.push(
       _createMail(
-        'looking for job?',
+        "looking for job?",
         `Misterbit is looking for a new janitor in their offices in Ramat-Gan!
         we are looking for a talented person who is speaking 15 languages (JS not included),
         has 47.5 years of experience in janitoring toilets, and a lovely smile!
         contact us for more information at:
         yaronbitton@misterbit.com`,
-        'inbox',
+        "inbox",
         {
-          email: 'noreply@codingacademy.com',
-          name: 'coding academy',
+          email: "noreply@codingacademy.com",
+          name: "coding academy",
         },
-        loggedInUser.email,
+        loggedInUser.email
       )
     );
     mails.push(
       _createMail(
-        'P.S',
+        "P.S",
         `you are a little shit. just wanted you to know. mmmmbabye`,
-        'inbox',
+        "inbox",
         {
-          email: 'biggershit@shittingbadashitter.com',
-          name: 'Gandi',
+          email: "biggershit@shittingbadashitter.com",
+          name: "Gandi",
         },
-        loggedInUser.email,
+        loggedInUser.email
       )
     );
     mails.push(
       _createMail(
-        'P.S',
+        "P.S",
         `you are a little shit. just wanted you to know. mmmmbabye`,
-        'inbox',
+        "inbox",
         {
-          email: 'biggershit@shittingbadashitter.com',
-          name: 'Gandi',
+          email: "biggershit@shittingbadashitter.com",
+          name: "Gandi",
         },
-        loggedInUser.email,
+        loggedInUser.email
       )
     );
     mails.push(
       _createMail(
-        'P.S',
+        "P.S",
         `you are a little shit. just wanted you to know. mmmmbabye`,
-        'inbox',
+        "inbox",
         {
-          email: 'biggershit@shittingbadashitter.com',
-          name: 'Gandi',
+          email: "biggershit@shittingbadashitter.com",
+          name: "Gandi",
         },
-        loggedInUser.email,
+        loggedInUser.email
       )
     );
     mails.push(
       _createMail(
-        'P.S',
+        "P.S",
         `you are a little shit. just wanted you to know. mmmmbabye`,
-        'inbox',
+        "inbox",
         {
-          email: 'biggershit@shittingbadashitter.com',
-          name: 'Gandi',
+          email: "biggershit@shittingbadashitter.com",
+          name: "Gandi",
         },
-        loggedInUser.email,
+        loggedInUser.email
       )
     );
     mails.push(
       _createMail(
-        'P.S',
+        "P.S",
         `you are a little shit. just wanted you to know. mmmmbabye`,
-        'inbox',
+        "inbox",
         {
-          email: 'biggershit@shittingbadashitter.com',
-          name: 'Gandi',
+          email: "biggershit@shittingbadashitter.com",
+          name: "Gandi",
         },
-        loggedInUser.email,
+        loggedInUser.email
       )
     );
     mails.push(
       _createMail(
-        'P.S',
+        "P.S",
         `you are a little shit. just wanted you to know. mmmmbabye`,
-        'inbox',
+        "inbox",
         {
-          email: 'biggershit@shittingbadashitter.com',
-          name: 'Gandi',
+          email: "biggershit@shittingbadashitter.com",
+          name: "Gandi",
         },
-        loggedInUser.email,
+        loggedInUser.email
       )
     );
     mails.push(
       _createMail(
-        'P.S',
+        "P.S",
         `you are a little shit. just wanted you to know. mmmmbabye`,
-        'inbox',
+        "inbox",
         {
-          email: 'biggershit@shittingbadashitter.com',
-          name: 'Gandi',
+          email: "biggershit@shittingbadashitter.com",
+          name: "Gandi",
         },
-        loggedInUser.email,
+        loggedInUser.email
       )
     );
     mails.push(
@@ -238,11 +242,10 @@ function _createMails() {
         "Matan Lasri is a nice person, but so does Lihi",
         "inbox",
         {
-          email: 'matanc@codingac.com',
-          name: 'Matan krispi',
+          email: "matanc@codingac.com",
+          name: "Matan krispi",
         },
-        loggedInUser.email,
-
+        loggedInUser.email
       )
     );
     mails.push(
@@ -254,17 +257,17 @@ function _createMails() {
           email: loggedInUser.email,
           name: loggedInUser.fullName,
         },
-          'Liranpa@apsusmail.com'
+        "Liranpa@apsusmail.com"
       )
     );
     mails.push(
       _createMail(
-        "The history of nothingness",
+        "The history",
         "150 ways to impress your snail, complete with pictures and audio",
         "inbox",
         {
-          email: 'weloveoursnails@snailophilia.com',
-          name: 'your snail overlords',
+          email: "weloveoursnails@snailophilia.com",
+          name: "your snail",
         },
         loggedInUser.email
       )
@@ -272,11 +275,11 @@ function _createMails() {
     mails.push(
       _createMail(
         "are you a robot?",
-        "01110011010101110111000001111010110",
+        "0111001101010111001111010110",
         "inbox",
         {
-          email: 'notarobot@probablyrobot.com',
-          name: 'hu mann',
+          email: "notarobot@probablyrobot.com",
+          name: "hu mann",
         },
         loggedInUser.email
       )
@@ -287,8 +290,8 @@ function _createMails() {
         "#1234af #821bc, #aaaaa",
         "inbox",
         {
-          email: 'notarobot@probablyrobotbutinhex.com',
-          name: 'you mann',
+          email: "notarobot@probablyrobotbutinhex.com",
+          name: "you mann",
         },
         loggedInUser.email
       )
@@ -300,8 +303,8 @@ function _createMails() {
         www.myhugevirus.com/trojan/hackyourmail`,
         "inbox",
         {
-          email: 'azadinalkasam@hamas.com',
-          name: 'butifol girl looking for fun',
+          email: "azadinalkasam@hamas.com",
+          name: "butifol girl",
         },
         loggedInUser.email
       )
@@ -313,8 +316,8 @@ function _createMails() {
         and why the hell am i sending email, there is a fucking whatsapp!`,
         "inbox",
         {
-          email: 'azadinalkasam@hamas.com',
-          name: 'butifol girl looking for fun',
+          email: "azadinalkasam@hamas.com",
+          name: "Hello",
         },
         loggedInUser.email
       )
@@ -328,8 +331,8 @@ function _createMails() {
         truely yours:`,
         "inbox",
         {
-          email: 'assaflotz@walla.com',
-          name: 'assaf lotz',
+          email: "assaflotz@walla.com",
+          name: "assaf lotz",
         },
         loggedInUser.email
       )
@@ -341,8 +344,8 @@ function _createMails() {
         thank you for buying!`,
         "inbox",
         {
-          email: 'tzometsfarim@tzometsfarim.com',
-          name: 'tzomet sfarim',
+          email: "tzometsfarim@tzometsfarim.com",
+          name: "tzomet sfarim",
         },
         loggedInUser.email
       )
@@ -354,8 +357,8 @@ function _createMails() {
         thank you for buying!`,
         "inbox",
         {
-          email: 'tzometsfarim@tzometsfarim.com',
-          name: 'tzomet sfarim',
+          email: "tzometsfarim@tzometsfarim.com",
+          name: "tzomet sfarim",
         },
         loggedInUser.email
       )
@@ -367,8 +370,8 @@ function _createMails() {
         thank you for buying!`,
         "inbox",
         {
-          email: 'tzometsfarim@tzometsfarim.com',
-          name: 'tzomet sfarim',
+          email: "tzometsfarim@tzometsfarim.com",
+          name: "tzomet sfarim",
         },
         loggedInUser.email
       )
@@ -380,8 +383,8 @@ function _createMails() {
         thank you for buying!`,
         "inbox",
         {
-          email: 'tzometsfarim@tzometsfarim.com',
-          name: 'tzomet sfarim',
+          email: "tzometsfarim@tzometsfarim.com",
+          name: "tzomet sfarim",
         },
         loggedInUser.email
       )
@@ -393,8 +396,8 @@ function _createMails() {
         thank you for buying!`,
         "inbox",
         {
-          email: 'tzometsfarim@tzometsfarim.com',
-          name: 'tzomet sfarim',
+          email: "tzometsfarim@tzometsfarim.com",
+          name: "tzomet sfarim",
         },
         loggedInUser.email
       )
