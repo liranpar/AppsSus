@@ -13,6 +13,7 @@
   min-width: 140px;
   max-width: 350px;
   margin: auto;
+  margin-top: 10px;
 }
 
 .compose-and-folder {

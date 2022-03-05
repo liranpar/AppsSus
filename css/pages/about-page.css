@@ -1,7 +1,61 @@
+.aboute-page h1 {
+  text-align: center;
+  font-size: calc(1.4rem + 1vw);
+}
+
+.aboute-page-p {
+  text-align: start;
+  padding-left: 10px;
+  font-size: calc(0.6rem + 1vw);
+}
+
+.aboute-page h2 {
+  margin-top: 30px;
+  margin-bottom: 10px;
+  text-align: center;
+  font-size: calc(1.1rem + 1vw);
+}
+
 .about-cont {
   display: flex;
 }
 
 .about-div {
   width: 45%;
+  height: 45vh;
+  text-align: center;
+  margin: auto;
+}
+
+.about-div-p {
+  text-align: center;
+  margin: auto;
+  font-weight: bold;
+  font-size: calc(0.8rem + 0.8vw);
+}
+
+.role {
+  color: grey;
+  font-size: calc(0.6rem + 0.8vw);
+}
+
+.image-div {
+  width: 50%;
+  margin: auto;
+  /* text-align: center; */
+}
+
+.image-div img {
+  /* text-align: center; */
+  width: 80%;
+  min-width: 80px;
+  margin-top: 7px;
+  margin-bottom: 20px;
+  margin: auto;
+  border-radius: 50%;
+}
+
+.description {
+  font-size: calc(0.9rem + 0.5vw);
+  color: rgb(53, 53, 53);
 }
