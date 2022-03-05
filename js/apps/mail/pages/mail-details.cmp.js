@@ -3,11 +3,17 @@ import { mailService } from "../services/mail.service.cmp.js";
 export default {
   template: `
 <section v-if="currMail" class="mail-details">  
-    <h1>{{ currMail.subject }}</h1>
-    <h3>{{ currMail.sender.name }}</h3> <span> &#60;{{ currMail.sender.email }}&#62;</span>
-    <p>{{ currMail.body }}</p>
-    <button class="remove-within-details" @click="removeEmail"> Delete mail </button>
-    <button @click="backToList">Back</button>
+    <div class="btns-details-cont" >
+      <span class="details-btn" @click="backToList">Back</span>
+      <span class="details-btn remove-within-details" @click="removeEmail">Delete</span>
+    </div>
+    <h1 class="subject">{{ currMail.subject }}</h1> 
+    <hr>
+    <p  class="sender">
+      <h3>{{ currMail.sender.name }}</h3> <span> &#60;{{ currMail.sender.email }}&#62;</span>
+    </p>
+    <hr>
+    <p class="mail-content">{{ currMail.body }}</p>
 </section>
 `,
   data() {
@@ -44,6 +50,5 @@ export default {
   },
 };
 
-
-// TODO: when clicking "back" or deleteing an email - it should go back to the relevant filter 
+// TODO: when clicking "back" or deleteing an email - it should go back to the relevant filter
 // (if the mail was in inbox - gp back to inbox, if sent - go back to sent folder)

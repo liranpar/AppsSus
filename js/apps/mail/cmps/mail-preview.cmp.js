@@ -65,7 +65,9 @@ export default {
       ) {
         return months[month] + ", " + date;
       }
-      return this.padTo2Digits(this.hours + ":" + this.minutes);
+      return (
+        this.padTo2Digits(this.hours) + ":" + this.padTo2Digits(this.minutes)
+      );
     },
     bodyLength(mail) {
       if (mail.body.length > 50) return mail.body.slice(0, 47) + " ...";
