@@ -11,8 +11,8 @@ export default {
                   </div>
               </router-link>  
               <div class="actions-time">
-                <span v-if="!hover" class="mail-time" @mouseover="hover = true">{{getTimeForDisplay()}}</span>
-                <span v-if="hover" @mouseleave="hover = false">
+                <span class="mail-time">{{getTimeForDisplay()}}</span>
+                <span>
                   <button @click="setToReadNotRead(mail.id)">✉</button>
                   <button @click="removeMail(mail.id)">❌</button>
                 </span>
@@ -24,7 +24,6 @@ export default {
     return {
       hours: new Date(this.mail.sentAt).getHours(),
       minutes: new Date(this.mail.sentAt).getMinutes(),
-      hover: false,
     };
   },
 
