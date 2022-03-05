@@ -13,7 +13,7 @@ export default {
              <div v-if="!isCompose" class="compose-btn" @click="isCompose = !isCompose"  @mouseover="hover = true"  @mouseleave="hover = false">
                   <span>➕</span><span v-if="hover" class="compose-word"> Compose</span>
              </div>
-             <mail-folder-list @setFilter="setFilter"/>
+             <mail-folder-list @setFilter="setFilter" :mails="mails"/>
              <mail-compose v-if="isCompose" @closeModal="isCompose=!isCompose" @sendMail="sendMail"/>
           </section>
           <section class="filter-list-cont" >
