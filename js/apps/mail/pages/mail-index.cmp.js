@@ -17,11 +17,8 @@ export default {
              <mail-compose v-if="isCompose" @closeModal="isCompose=!isCompose" @sendMail="sendMail"/>
           </section>
           <section class="filter-list-cont" >
-            <input class="search-input" name="search-mail"  type="text">
+            <input class="search-input" name="search-mail" type="text" placeholder="Search.." v-model="filterBy.text" >
             <mail-list v-if="mails" :mails="mailsToDisplay" @removeMail="removeMail"  @setToReadNotRead="setToReadNotRead" />
-          <section>
-
-
           </section>
         </section>
 `,
@@ -85,8 +82,24 @@ export default {
   },
   computed: {
     mailsToDisplay() {
-      //   return this.mails;
-      return this.mails.filter((mail) => mail.status === this.filterBy.folder);
+      const regex = new RegExp(this.filterBy.text, "i");
+      console.log(this.filterBy.text);
+      return this.mails.filter((mail) => {
+        return (
+          (regex.test(mail.sender.email) ||
+            regex.test(mail.receiver) ||
+            regex.test(mail.subject) ||
+            regex.test(mail.body) ||
+            regex.test(mail.sender.name)) &&
+          mail.status === this.filterBy.folder
+        );
+      });
     },
   },
 };
+
+// regex.test(mail.sender.email))
+// ||
+// regex.test(mail.subject) ||
+// regex.test(mail.body) ||
+// regex.test(mail.sender.name)

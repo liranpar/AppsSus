@@ -10,8 +10,8 @@
 
 .search-input {
   width: 70%;
-  width: minmax(170px, 300px);
-
+  min-width: 140px;
+  max-width: 350px;
   margin: auto;
 }
 

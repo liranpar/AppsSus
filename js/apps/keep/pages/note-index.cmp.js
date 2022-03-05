@@ -91,7 +91,6 @@ export default {
     notesForDisplay() {
       if (!this.filterBy) return this.notes;
       const regex = new RegExp(this.filterBy.text, "i");
-      console.log(this.filterBy);
       return this.notes.filter((note) => {
         if (note.type === "list") {
           let listText = note.content.join(" ");
