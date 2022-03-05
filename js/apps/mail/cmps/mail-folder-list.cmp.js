@@ -2,11 +2,11 @@ export default {
   template: `
         <section class="mail-folder-list">
             <ul class="mail-folder-list-ul">
-                <li @click="setFilter('inbox')" :class="{ folderClicked: isSelecedFolder.inbox }" >Inbox</li>
-                <li @click="setFilter('starred')" :class="{ folderClicked: isSelecedFolder.starred }">Starred</li>
-                <li @click="setFilter('sent')"  :class="{ folderClicked: isSelecedFolder.sent }">Sent Mail</li>
-                <li @click="setFilter('drafts')" :class="{ folderClicked: isSelecedFolder.drafts }">Drafts</li>
-                <li @click="setFilter('removed')" :class="{ folderClicked: isSelecedFolder.removed }">Deleted</li>
+                <li @click="setFilter('inbox')" :class="isSelecedFolder.inbox && folderClicked" >Inbox</li>
+                <li @click="setFilter('starred')" :class="isSelecedFolder.starred && folderClicked ">Starred</li>
+                <li @click="setFilter('sent')"  :class="isSelecedFolder.sent && folderClicked">Sent Mail</li>
+                <li @click="setFilter('drafts')" :class="isSelecedFolder.drafts && folderClicked">Drafts</li>
+                <li @click="setFilter('removed')" :class="isSelecedFolder.removed && folderClicked">Deleted</li>
             </ul>
         </section>
 `,
