@@ -70,7 +70,7 @@ export default {
       );
     },
     bodyLength(mail) {
-      if (mail.body.length > 50) return mail.body.slice(0, 47) + " ...";
+      if (mail.body.length > 40) return mail.body.slice(0, 38) + " ...";
       return mail.body;
     },
     checkSendReceive(mail) {
