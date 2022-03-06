@@ -69,6 +69,15 @@ function _createNotes() {
         },
       },
       {
+        id: "fdSs47HJ",
+        type: "image",
+        content:
+          "https://community.adobe.com/legacyfs/online/1229106_landscape-16.jpg",
+        style: {
+          backgroundColor: "yellow",
+        },
+      },
+      {
         id: "fdSg55HJ",
         type: "text",
         content: "nice noteeee",
