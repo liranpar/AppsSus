@@ -114,6 +114,15 @@ function _createNotes() {
         },
       },
       {
+        id: "fdSd18HJ",
+        type: "image",
+        content:
+          "https://photographycourse.net/wp-content/uploads/2014/11/Landscape-Photography-steps.jpg",
+        style: {
+          backgroundColor: "rgb(lightcoral)",
+        },
+      },
+      {
         id: "fdSg58HJ",
         type: "list",
         content: ["make an amazing App", "Drink beer", "Sleep 7 hours"],
