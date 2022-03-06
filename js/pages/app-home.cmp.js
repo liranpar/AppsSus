@@ -2,7 +2,7 @@ export default {
 template: `
     <section class="home-page">
         <section class="home-logo">
-            <router-link to="/about"><img src="../assets/images/logo.png" title="Check us out!"></router-link>
+            <router-link to="/about"><img src="assets/images/logo.png" title="Check us out!"></router-link>
         </section>
         <h1 class="pick-app-title">Pick your favorite App:</h1>
             <ul class="apps-images-ul">
